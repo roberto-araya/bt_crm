@@ -1,0 +1,94 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.bt_opportunity
+  module:
+    - ctools_block
+    - panels
+id: bt_opportunity-panels_variant-0
+label: 'Opportunity Default'
+variant: panels_variant
+variant_settings:
+  blocks:
+    51fc4b0e-14d2-4de2-b4ae-49c9c1c02613:
+      id: 'entity_field:bt_opportunities:field_bt_contact'
+      label: Contact
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: inline
+        type: entity_reference_label
+        settings:
+          link: true
+        third_party_settings: {  }
+        weight: 0
+      region: contentmain
+      weight: 1
+      uuid: 51fc4b0e-14d2-4de2-b4ae-49c9c1c02613
+      context_mapping:
+        entity: bt_opportunities
+    998d8778-8397-404c-848c-64fe7bf0585a:
+      id: 'entity_field:bt_opportunities:field_bt_description'
+      label: Description
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: text_default
+        settings: {  }
+        third_party_settings: {  }
+        weight: 0
+      region: contentmain
+      weight: 4
+      uuid: 998d8778-8397-404c-848c-64fe7bf0585a
+      context_mapping:
+        entity: bt_opportunities
+    fcde2442-89b2-49b4-8aa1-84770ede5db2:
+      id: 'entity_field:bt_opportunities:field_bt_organization'
+      label: Organization
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: inline
+        type: entity_reference_label
+        settings:
+          link: true
+        third_party_settings: {  }
+        weight: 0
+      region: contentmain
+      weight: 3
+      uuid: fcde2442-89b2-49b4-8aa1-84770ede5db2
+      context_mapping:
+        entity: bt_opportunities
+    9b7aed4e-f262-4820-9517-0e41461b4203:
+      id: 'entity_field:bt_opportunities:field_bt_status'
+      label: Status
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: inline
+        type: list_default
+        settings: {  }
+        third_party_settings: {  }
+        weight: 0
+      context_mapping:
+        entity: bt_opportunities
+      region: contentmain
+      uuid: 9b7aed4e-f262-4820-9517-0e41461b4203
+      weight: 2
+  id: panels_variant
+  uuid: fa3fd111-69e9-4885-9e58-4b1d03fdce2b
+  label: null
+  weight: 0
+  layout: radix_boxton
+  layout_settings: {  }
+  page_title: '[bt_opportunities:title]'
+  storage_type: page_manager
+  storage_id: bt_opportunity-panels_variant-0
+  builder: ipe
+page: bt_opportunity
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

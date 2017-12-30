@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      value: en_espera
+      label: 'En espera'
+    -
+      value: vigente
+      label: Vigente
+    -
+      value: ganada
+      label: Ganada
+    -
+      value: perdida
+      label: Perdida

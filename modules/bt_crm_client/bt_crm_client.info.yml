@@ -1,0 +1,7 @@
+name: Btester Client
+type: module
+description: Btester CRM Client
+core: 8.x
+package: Btester
+dependencies:
+  - bt_crm

@@ -1,0 +1,6 @@
+<?php
+
+function bt_crm_supplier_install() {
+    //Add path alias
+    \Drupal::service('path.alias_storage')->save('/app/contacts/add/organization/bt_supplier', '/app/contacts/add/organization/supplier', 'en');
+}

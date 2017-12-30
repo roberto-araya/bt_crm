@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.bt_add_contact
+  module:
+    - entity_forms_in_blocks
+    - panels
+id: bt_add_contact-panels_variant-0
+label: 'Add Contact Default'
+variant: panels_variant
+variant_settings:
+  blocks:
+    5627ff57-f2fa-4380-a83c-344f97f21b4c:
+      id: entity_forms_in_blocks
+      label: 'Entity form in block'
+      provider: entity_forms_in_blocks
+      label_display: '0'
+      entity_type: redhen_contact
+      bundle: bt_contact
+      form_mode: default
+      region: contentmain
+      weight: 0
+      uuid: 5627ff57-f2fa-4380-a83c-344f97f21b4c
+      context_mapping: {  }
+  id: panels_variant
+  uuid: fef108b4-41df-44a7-8ec0-15fee4fb1d56
+  label: null
+  weight: 0
+  layout: radix_boxton
+  layout_settings: {  }
+  page_title: 'Add Contact'
+  storage_type: page_manager
+  storage_id: bt_add_contact-panels_variant-0
+  builder: standard
+page: bt_add_contact
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - redhen_contact
+    - rut_field
+id: redhen_contact.field_bt_rut
+field_name: field_bt_rut
+entity_type: redhen_contact
+type: rut_field_rut
+settings: {  }
+module: rut_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

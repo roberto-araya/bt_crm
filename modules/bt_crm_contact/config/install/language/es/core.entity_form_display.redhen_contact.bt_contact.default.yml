@@ -1,0 +1,12 @@
+third_party_settings:
+  field_group:
+    personal_information_group:
+      label: 'Información Personal'
+    contact_information_group:
+      label: 'Información de Contacto'
+content:
+  field_bt_address:
+    third_party_settings:
+      field_states_ui:
+        form:
+          add: Agregar

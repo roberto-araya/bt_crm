@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: bt_contacts_activities_manager
+label: 'Manager of contacts and activities'
+roles:
+  bt_manage_crm: bt_manage_crm

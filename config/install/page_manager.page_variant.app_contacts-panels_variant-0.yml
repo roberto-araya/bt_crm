@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.app_contacts
+  module:
+    - panels
+id: app_contacts-panels_variant-0
+label: 'Contacts Default'
+variant: panels_variant
+variant_settings:
+  blocks: {  }
+  id: panels_variant
+  uuid: b2be381e-e193-432f-9d6c-dc373ceac5ed
+  label: null
+  weight: 0
+  layout: radix_boxton
+  layout_settings: {  }
+  page_title: Contacts
+  storage_type: page_manager
+  storage_id: app_contacts-panels_variant-0
+  builder: ipe
+page: app_contacts
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

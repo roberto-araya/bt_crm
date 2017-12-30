@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.bt_schedule_email
+  module:
+    - entity_forms_in_blocks
+    - panels
+id: bt_schedule_email-panels_variant-0
+label: 'Schedule Email Default'
+variant: panels_variant
+variant_settings:
+  blocks:
+    269d5bcf-9704-46cb-920e-d145452cee51:
+      id: entity_forms_in_blocks
+      label: 'Entity form in block'
+      provider: entity_forms_in_blocks
+      label_display: '0'
+      entity_type: bt_activities
+      bundle: bt_schedule_email
+      form_mode: default
+      region: contentmain
+      weight: 0
+      uuid: 269d5bcf-9704-46cb-920e-d145452cee51
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 7778caaa-ae76-44c5-87cc-550dcafac9fb
+  label: null
+  weight: 0
+  layout: radix_boxton
+  layout_settings: {  }
+  page_title: 'Schedule Email'
+  storage_type: page_manager
+  storage_id: bt_schedule_email-panels_variant-0
+  builder: ipe
+page: bt_schedule_email
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

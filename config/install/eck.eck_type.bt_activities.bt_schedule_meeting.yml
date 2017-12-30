@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.bt_activities
+name: 'Meeting'
+type: bt_schedule_meeting
+description: 'This type of activity will allow you to schedule a meeting and make notes about it.'

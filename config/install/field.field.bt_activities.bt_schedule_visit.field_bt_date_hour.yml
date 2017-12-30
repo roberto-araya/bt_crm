@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.bt_activities.bt_schedule_visit
+    - field.storage.bt_activities.field_bt_date_hour
+  module:
+    - datetime
+id: bt_activities.bt_schedule_visit.field_bt_date_hour
+field_name: field_bt_date_hour
+entity_type: bt_activities
+bundle: bt_schedule_visit
+label: Date
+description: 'Enter the date and time of the visit.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

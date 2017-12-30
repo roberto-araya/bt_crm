@@ -1,0 +1,32 @@
+bt_add_contact_action:
+  route_name: entity.redhen_contact.add_page
+  title: 'Add person'
+  appears_on:
+    - page_manager.page_view_app_persons_app_persons-panels_variant-0
+
+bt_add_organization_action:
+  route_name: entity.redhen_org.add_page
+  title: 'Add organization'
+  appears_on:
+    - page_manager.page_view_app_organizations_app_organizations-panels_variant-0
+
+bt_schedule_activity_action:
+  route_name: bt_activities.add_page
+  title: "Schedule activity"
+  class: '\Drupal\bt_crm\Plugin\Menu\LocalAction\ScheduleActivityLocalAction'
+  appears_on:
+    - entity.redhen_contact.canonical
+    - entity.bt_opportunities.canonical
+    - page_manager.page_view_app_activities_app_activities-panels_variant-0
+
+bt_create_opportunity_action:
+  route_name: bt_opportunities.add
+  class: '\Drupal\bt_crm\Plugin\Menu\LocalAction\CreateOpportunityLocalAction'
+  title: 'Create opportunity'
+  route_parameters:
+    eck_entity_type: bt_opportunities
+    eck_entity_bundle: bt_opportunity
+  appears_on:
+    - entity.redhen_contact.canonical
+    - entity.redhen_org.canonical
+    - page_manager.page_view_app_activities_opportunities_app_activities_opportunities-panels_variant-0

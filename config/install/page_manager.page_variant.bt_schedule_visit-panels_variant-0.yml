@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.bt_schedule_visit
+  module:
+    - entity_forms_in_blocks
+    - panels
+id: bt_schedule_visit-panels_variant-0
+label: 'Schedule Visit Default'
+variant: panels_variant
+variant_settings:
+  blocks:
+    c6d0f433-7784-488c-bc05-41e3ed082cef:
+      id: entity_forms_in_blocks
+      label: 'Entity form in block'
+      provider: entity_forms_in_blocks
+      label_display: '0'
+      entity_type: bt_activities
+      bundle: bt_schedule_visit
+      form_mode: default
+      region: contentmain
+      weight: 0
+      uuid: c6d0f433-7784-488c-bc05-41e3ed082cef
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 69d453d7-e342-498d-9b2d-a28f69f1d836
+  label: null
+  weight: 0
+  layout: radix_boxton
+  layout_settings: {  }
+  page_title: 'Schedule Commercial Visit'
+  storage_type: page_manager
+  storage_id: bt_schedule_visit-panels_variant-0
+  builder: ipe
+page: bt_schedule_visit
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

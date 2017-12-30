@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.app_activities
+    - views.view.bt_manage_activities
+  module:
+    - panels
+    - views
+id: app_activities-panels_variant-0
+label: 'Activities Default'
+variant: panels_variant
+variant_settings:
+  blocks:
+    50930087-d9b8-4960-9b38-5941ed44eafb:
+      id: 'views_block:bt_manage_activities-activities_list'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      context_mapping: {  }
+      region: contentmain
+      uuid: 50930087-d9b8-4960-9b38-5941ed44eafb
+      weight: 1
+  id: panels_variant
+  uuid: ce909075-0ed8-444e-bb47-ef1b7e332581
+  label: null
+  weight: 0
+  layout: radix_boxton
+  layout_settings: {  }
+  page_title: Activities
+  storage_type: page_manager
+  storage_id: app_activities-panels_variant-0
+  builder: ipe
+page: app_activities
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

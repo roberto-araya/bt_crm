@@ -1,0 +1,11 @@
+settings:
+  allowed_values:
+    -
+      value: movil
+      label: Móvil
+    -
+      value: trabajo
+      label: Trabajo
+    -
+      value: particular
+      label: Particular

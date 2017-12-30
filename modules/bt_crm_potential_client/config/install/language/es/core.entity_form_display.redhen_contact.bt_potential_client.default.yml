@@ -1,0 +1,20 @@
+third_party_settings:
+  field_group:
+    personal_information_group:
+      label: 'Información Personal'
+    contact_information_group:
+      format_settings:
+        label: 'Información de Contacto'
+      label: 'Información de Contacto'
+    system_group:
+      format_settings:
+        label: Sistema
+      label: Sistema
+content:
+  field_bt_address:
+    settings:
+      default_country: CL
+    third_party_settings:
+      field_states_ui:
+        form:
+          add: Agregar

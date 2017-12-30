@@ -1,0 +1,6 @@
+<?php
+
+function bt_crm_contact_install() {
+    //Add path alias
+    \Drupal::service('path.alias_storage')->save('/app/contacts/add/person/bt_contact', '/app/contacts/add/person/contact', 'en');
+}

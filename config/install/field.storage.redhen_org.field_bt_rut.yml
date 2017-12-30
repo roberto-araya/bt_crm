@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - redhen_org
+    - rut_field
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: redhen_org.field_bt_rut
+field_name: field_bt_rut
+entity_type: redhen_org
+type: rut_field_rut
+settings: {  }
+module: rut_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.bt_opportunities.bt_opportunity
+    - field.storage.bt_opportunities.field_bt_description
+  module:
+    - better_formats
+    - text
+third_party_settings:
+  better_formats:
+    allowed_formats_toggle: 1
+    allowed_formats:
+      bt_simple_redaction: bt_simple_redaction
+      bt_full_redaction: 0
+    default_order_toggle: 0
+    default_order_wrapper:
+      formats:
+        bt_simple_redaction:
+          weight: '-10'
+        bt_full_redaction:
+          weight: '-9'
+id: bt_opportunities.bt_opportunity.field_bt_description
+field_name: field_bt_description
+entity_type: bt_opportunities
+bundle: bt_opportunity
+label: Description
+description: 'Enter a description of the opportunity detected.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

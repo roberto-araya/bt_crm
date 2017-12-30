@@ -1,0 +1,121 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.redhen_org.bt_company.field_bt_description
+    - field.field.redhen_org.bt_company.field_bt_address
+    - field.field.redhen_org.bt_company.field_bt_email
+    - field.field.redhen_org.bt_company.field_bt_web_address
+    - field.field.redhen_org.bt_company.field_bt_company_category
+    - field.field.redhen_org.bt_company.field_bt_rut
+    - field.field.redhen_org.bt_company.field_bt_phones
+    - redhen_org.redhen_org_type.bt_company
+  module:
+    - address
+    - field_collection
+    - field_group
+    - field_states_ui
+    - link
+    - rut_field
+    - text
+    - workbench_moderation
+third_party_settings:
+  field_group:
+    general_information_group:
+      children:
+        - name
+        - field_bt_rut
+        - field_bt_company_category
+        - field_bt_description
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        required_fields: true
+        description: ''
+      label: 'General Information'
+    contact_information_group:
+      children:
+        - field_bt_email
+        - field_bt_web_address
+        - field_bt_address
+        - field_bt_phones
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        label: 'Contact Information'
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: 'Contact Information'
+id: redhen_org.bt_company.default
+targetEntityType: redhen_org
+bundle: bt_company
+mode: default
+content:
+  field_bt_description:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_bt_address:
+    weight: 5
+    settings:
+      default_country: CL
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
+    type: address_default
+  field_bt_email:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+  field_bt_web_address:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_bt_company_category:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_bt_rut:
+    weight: 2
+    settings:
+      validate_js: true
+      message_js: ''
+    third_party_settings: {  }
+    type: rut_field_widget
+  field_bt_phones:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_embed
+  name:
+    type: string_textfield
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  path: true
+  status: true

@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+    - field_permissions
+    - redhen_contact
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: bt_activities.field_bt_participants
+field_name: field_bt_participants
+entity_type: bt_activities
+type: entity_reference
+settings:
+  target_type: redhen_contact
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

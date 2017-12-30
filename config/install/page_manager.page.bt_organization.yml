@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: bt_organization
+label: Organization
+description: 'Page that display information of an organization contact.'
+use_admin_theme: true
+path: '/app/contacts/organization/{redhen_org}'
+access_logic: and
+access_conditions:
+  -
+    id: user_role
+    roles:
+      bt_manage_crm: bt_manage_crm
+      bt_use_crm: bt_use_crm
+    negate: false
+    context_mapping:
+      user: current_user
+parameters:
+  redhen_org:
+    machine_name: redhen_org
+    type: 'entity:redhen_org'
+    label: Redhen_org

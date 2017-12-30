@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: app_organizations
+label: Organizations
+description: 'A page that displays a list of all contacts of organizations in the application.'
+use_admin_theme: true
+path: /app/contacts/organizations
+access_logic: and
+access_conditions:
+  -
+    id: user_role
+    roles:
+      bt_manage_crm: bt_manage_crm
+      bt_use_crm: bt_use_crm
+    negate: false
+    context_mapping:
+      user: current_user
+parameters: {  }

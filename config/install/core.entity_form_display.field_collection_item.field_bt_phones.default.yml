@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.field_collection_item.field_bt_phones.field_bt_phone
+    - field.field.field_collection_item.field_bt_phones.field_bt_phone_type
+    - field_collection.field_collection.field_bt_phones
+  module:
+    - telephone
+    - workbench_moderation
+id: field_collection_item.field_bt_phones.default
+targetEntityType: field_collection_item
+bundle: field_bt_phones
+mode: default
+content:
+  field_bt_phone:
+    type: telephone_default
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_bt_phone_type:
+    type: options_select
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

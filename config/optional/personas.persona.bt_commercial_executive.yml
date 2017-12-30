@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: bt_commercial_executive
+label: 'Commercial Executive'
+roles:
+  bt_use_crm: bt_use_crm

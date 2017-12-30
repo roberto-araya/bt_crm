@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.redhen_org.field_bt_address
+    - redhen_org.redhen_org_type.bt_supplier
+  module:
+    - address
+id: redhen_org.bt_supplier.field_bt_address
+field_name: field_bt_address
+entity_type: redhen_org
+bundle: bt_supplier
+label: Address
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries:
+    CL: CL
+  fields:
+    administrativeArea: administrativeArea
+    locality: locality
+    dependentLocality: dependentLocality
+    postalCode: postalCode
+    addressLine1: addressLine1
+    sortingCode: '0'
+    addressLine2: '0'
+    organization: '0'
+    givenName: '0'
+    additionalName: '0'
+    familyName: '0'
+  langcode_override: ''
+field_type: address

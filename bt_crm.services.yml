@@ -1,0 +1,17 @@
+services:
+  bt_crm.route_subscriber:
+    class: Drupal\bt_crm\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+  bt_crm.contacts_breadcrumbs:
+    class: Drupal\bt_crm\Breadcrumb\ContactsBreadcrumbBuilder
+    tags:
+      - { name: breadcrumb_builder, priority: 1009 }
+  bt_crm.activities_breadcrumbs:
+    class: Drupal\bt_crm\Breadcrumb\ActivitiesBreadcrumbBuilder
+    tags:
+      - { name: breadcrumb_builder, priority: 1009 }
+  bt_crm.opportunities_breadcrumbs:
+    class: Drupal\bt_crm\Breadcrumb\OpportunitiesBreadcrumbBuilder
+    tags:
+      - { name: breadcrumb_builder, priority: 1009 }

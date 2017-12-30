@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.bt_create_opportunity
+  module:
+    - entity_forms_in_blocks
+    - panels
+id: bt_create_opportunity-panels_variant-0
+label: 'Create Opportunity Default'
+variant: panels_variant
+variant_settings:
+  blocks:
+    582a8d9b-0902-4bcf-ae73-06e618e95c8c:
+      id: entity_forms_in_blocks
+      label: 'Entity form in block'
+      provider: entity_forms_in_blocks
+      label_display: '0'
+      entity_type: bt_opportunities
+      bundle: bt_opportunity
+      form_mode: default
+      region: contentmain
+      weight: 0
+      uuid: 582a8d9b-0902-4bcf-ae73-06e618e95c8c
+      context_mapping: {  }
+  id: panels_variant
+  uuid: fceb2928-6502-4667-bafd-0aaaec79bb6c
+  label: null
+  weight: 0
+  layout: radix_boxton
+  layout_settings: {  }
+  page_title: 'Create Opportunity'
+  storage_type: page_manager
+  storage_id: bt_create_opportunity-panels_variant-0
+  builder: ipe
+page: bt_create_opportunity
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.app_activities_opportunities
+    - views.view.bt_manage_opportunities
+  module:
+    - panels
+    - views
+id: app_activities_opportunities-panels_variant-0
+label: 'Opportunities Default'
+variant: panels_variant
+variant_settings:
+  blocks:
+    4737fd31-d23a-4c0c-b578-e3711091b387:
+      id: 'views_block:bt_manage_opportunities-opportunities_list'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      context_mapping: {  }
+      region: contentmain
+      uuid: 4737fd31-d23a-4c0c-b578-e3711091b387
+      weight: 1
+  id: panels_variant
+  uuid: 75d087fe-db42-4d50-a8ad-05af66ddda0c
+  label: null
+  weight: 0
+  layout: radix_boxton
+  layout_settings: {  }
+  page_title: Opportunities
+  storage_type: page_manager
+  storage_id: app_activities_opportunities-panels_variant-0
+  builder: ipe
+page: app_activities_opportunities
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

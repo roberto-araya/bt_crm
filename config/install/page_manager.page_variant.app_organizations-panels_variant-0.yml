@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.app_organizations
+    - views.view.bt_manage_organizations
+  module:
+    - panels
+    - views
+id: app_organizations-panels_variant-0
+label: 'Organizations Default'
+variant: panels_variant
+variant_settings:
+  blocks:
+    391577a2-8d4d-43d4-94cb-24b0ca0f64d2:
+      id: 'views_block:bt_manage_organizations-organizations_list'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      context_mapping: {  }
+      region: contentmain
+      uuid: 391577a2-8d4d-43d4-94cb-24b0ca0f64d2
+      weight: 1
+  id: panels_variant
+  uuid: 833faca0-ea41-45c3-9119-5a35d755f4e6
+  label: null
+  weight: 0
+  layout: radix_boxton
+  layout_settings: {  }
+  page_title: Organizations
+  storage_type: page_manager
+  storage_id: app_organizations-panels_variant-0
+  builder: ipe
+page: app_organizations
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

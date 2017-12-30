@@ -1,0 +1,137 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.bt_contact
+    - views.view.bt_manage_activities
+    - views.view.bt_manage_opportunities
+  module:
+    - ctools_block
+    - panels
+    - views
+id: bt_contact-panels_variant-0
+label: 'Contact Default'
+variant: panels_variant
+variant_settings:
+  blocks:
+    a023328b-3028-4c8e-a431-1f6689197b93:
+      id: 'entity_field:redhen_contact:email'
+      label: Email
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: inline
+        type: basic_string
+        settings: {  }
+        third_party_settings: {  }
+        weight: 0
+      region: column1
+      weight: -2
+      uuid: a023328b-3028-4c8e-a431-1f6689197b93
+      context_mapping:
+        entity: redhen_contact
+    6992c036-cd9d-4a5c-ae2f-46e2b110ef1d:
+      id: 'entity_field:redhen_contact:first_name'
+      label: 'First Name'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: inline
+        type: string
+        settings:
+          link_to_entity: false
+        third_party_settings: {  }
+        weight: 0
+      region: column1
+      weight: -1
+      uuid: 6992c036-cd9d-4a5c-ae2f-46e2b110ef1d
+      context_mapping:
+        entity: redhen_contact
+    1d60f9d5-680a-426b-9a07-8ae0d8125f22:
+      id: 'entity_field:redhen_contact:last_name'
+      label: 'Last Name'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: inline
+        type: string
+        settings:
+          link_to_entity: false
+        third_party_settings: {  }
+        weight: 0
+      region: column1
+      weight: 1
+      uuid: 1d60f9d5-680a-426b-9a07-8ae0d8125f22
+      context_mapping:
+        entity: redhen_contact
+    eebb1fb8-7f07-41ab-8043-0737aebf38d0:
+      id: 'entity_field:redhen_contact:middle_name'
+      label: 'Middle Name'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: inline
+        type: string
+        settings:
+          link_to_entity: false
+        third_party_settings: {  }
+        weight: 0
+      region: column1
+      weight: 0
+      uuid: eebb1fb8-7f07-41ab-8043-0737aebf38d0
+      context_mapping:
+        entity: redhen_contact
+    37ef94f5-f05e-44c9-bdbb-a431cdd0d804:
+      id: 'entity_field:redhen_contact:field_bt_phones'
+      label: Phones
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: inline
+        type: field_collection_items
+        settings:
+          view_mode: bt_phone
+        third_party_settings: {  }
+        weight: 0
+      region: column1
+      weight: 2
+      uuid: 37ef94f5-f05e-44c9-bdbb-a431cdd0d804
+      context_mapping:
+        entity: redhen_contact
+    7848f8f2-d501-42b3-9faf-303c85c7fdf3:
+      id: 'views_block:bt_manage_activities-contact_activities_list'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: column2
+      weight: 0
+      uuid: 7848f8f2-d501-42b3-9faf-303c85c7fdf3
+      context_mapping: {  }
+    fd8c1307-fe46-42c5-b274-0a92889ba790:
+      id: 'views_block:bt_manage_opportunities-contact_opportunities_list'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: column2
+      weight: 0
+      uuid: fd8c1307-fe46-42c5-b274-0a92889ba790
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 60c125da-fe7b-4bca-8acc-53acf9f87422
+  label: null
+  weight: 0
+  layout: radix_sanderson_flipped
+  layout_settings: {  }
+  page_title: '[current-page:title]'
+  storage_type: page_manager
+  storage_id: bt_contact-panels_variant-0
+  builder: ipe
+page: bt_contact
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

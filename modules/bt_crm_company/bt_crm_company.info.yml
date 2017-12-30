@@ -1,0 +1,7 @@
+name: Btester Company
+type: module
+description: Btester CRM Company
+core: 8.x
+package: Btester
+dependencies:
+  - bt_crm

@@ -1,0 +1,68 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.bt_activities.bt_schedule_visit
+    - field.field.bt_activities.bt_schedule_visit.field_bt_contact
+    - field.field.bt_activities.bt_schedule_visit.field_bt_description
+    - field.field.bt_activities.bt_schedule_visit.field_bt_address
+    - field.field.bt_activities.bt_schedule_visit.field_bt_status
+    - field.field.bt_activities.bt_schedule_visit.field_bt_date_hour
+    - field.field.bt_activities.bt_schedule_visit.field_bt_opportunity
+  module:
+    - address
+    - datetime
+    - field_states_ui
+id: bt_activities.bt_schedule_visit.default
+targetEntityType: bt_activities
+bundle: bt_schedule_visit
+mode: default
+content:
+  field_bt_contact:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_bt_address:
+    weight: 2
+    settings:
+      default_country: CL
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+    type: address_default
+  field_bt_status:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_bt_date_hour:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_bt_opportunity:
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_bt_description: true
+  langcode: true
+  path: true

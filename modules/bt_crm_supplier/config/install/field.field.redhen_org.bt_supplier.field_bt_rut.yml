@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.redhen_org.field_bt_rut
+    - redhen_org.redhen_org_type.bt_supplier
+  module:
+    - rut_field
+id: redhen_org.bt_supplier.field_bt_rut
+field_name: field_bt_rut
+entity_type: redhen_org
+bundle: bt_supplier
+label: RUT
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: rut_field_rut

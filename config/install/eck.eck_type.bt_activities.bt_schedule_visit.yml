@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.bt_activities
+name: 'Commercial Visit'
+type: bt_schedule_visit
+description: 'Allows you to remember to make a commercial visit to a specific contact.'

@@ -1,0 +1,72 @@
+third_party_settings:
+  field_group:
+    personal_information_group:
+      label: 'Información Personal'
+      format_settings:
+        label: 'Información Personal'
+    contact_information_group:
+      label: 'Información de Contacto'
+    system_group:
+      label: Sistema
+      format_settings:
+        label: Sistema
+content:
+  email:
+    settings:
+      placeholder: 'Ingrese aquí el correo electrónico del contacto.'
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          field_state_new:
+            add: Agregar
+  field_bt_address:
+    third_party_settings:
+      field_states_ui:
+        form:
+          add: Agregar
+  field_bt_rut:
+    settings:
+      message_js: 'Ingrese un RUT válido.'
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          field_state_new:
+            add: Agregar
+  first_name:
+    settings:
+      placeholder: 'Ingrese aquí el primer nombre del contacto.'
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          field_state_new:
+            add: Agregar
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  last_name:
+    settings:
+      placeholder: 'Ingrese aquí los apellidos del contacto.'
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          field_state_new:
+            add: Agregar
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  middle_name:
+    settings:
+      placeholder: 'Ingrese aquí el segundo nombre del contacto.'
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          field_state_new:
+            add: Agregar
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  uid:
+    settings:
+      placeholder: 'Ingrese aquí el nombre de usuario del sistema.'
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          field_state_new:
+            add: Agregar

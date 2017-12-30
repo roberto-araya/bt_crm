@@ -1,0 +1,22 @@
+{
+  "name": "drupal/bt_crm",
+  "type": "drupal-module",
+  "description": "",
+  "homepage": "https://www.drupal.org/project/bt_crm",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Roberto Araya",
+      "homepage": "https://www.drupal.org/u/roberto_araya"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/bt_crm",
+    "source": "http://git.drupal.org/project/bt_crm.git"
+  },
+  "require": {
+    "drupal/bt_core": "dev-master",
+    "drupal/redhen": "1.x-dev",
+    "drupal/eck": "1.x-dev"
+  }
+}

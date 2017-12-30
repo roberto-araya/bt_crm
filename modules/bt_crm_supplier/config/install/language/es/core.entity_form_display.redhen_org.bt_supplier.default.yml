@@ -1,0 +1,14 @@
+third_party_settings:
+  field_group:
+    general_information_group:
+      label: 'Información General'
+    contact_information_group:
+      label: 'Información de Contacto'
+content:
+  field_bt_address:
+    settings:
+      default_country: CL
+    third_party_settings:
+      field_states_ui:
+        form:
+          add: Agregar

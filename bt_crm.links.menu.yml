@@ -1,0 +1,69 @@
+bt_contacts_menu:
+  title: 'Contacts'
+  description: 'Contacts dashboard'
+  route_name: page_manager.page_view_app_contacts_app_contacts-panels_variant-0
+  weight: 2
+  menu_name: bt-menu-app
+
+bt_contacts_persons_menu:
+  title: 'Persons'
+  description: 'List of all personal contacts.'
+  route_name: page_manager.page_view_app_persons_app_persons-panels_variant-0
+  parent: bt_contacts_menu
+  weight: 0
+  menu_name: bt-menu-app
+
+bt_contacts_persons_add_menu:
+  title: 'Add person'
+  description: 'Add new contact of type person'
+  route_name: entity.redhen_contact.add_page
+  parent: bt_contacts_persons_menu
+  weight: 0
+  menu_name: bt-menu-app
+
+bt_contacts_organizations_menu:
+  title: 'Organizations'
+  description: 'List of all organizational contacts'
+  route_name: page_manager.page_view_app_organizations_app_organizations-panels_variant-0
+  parent: bt_contacts_menu
+  weight: 1
+  menu_name: bt-menu-app
+
+bt_contacts_organizations_add_menu:
+  title: 'Add organization'
+  description: 'Add organization'
+  route_name: entity.redhen_org.add_page
+  parent: bt_contacts_organizations_menu
+  weight: 0
+  menu_name: bt-menu-app
+
+bt_activities_menu:
+  title: 'Activities'
+  description: 'List of all activities.'
+  route_name: page_manager.page_view_app_activities_app_activities-panels_variant-0
+  weight: 3
+  menu_name: bt-menu-app
+
+bt_activities_add_menu:
+  title: 'Schedule activity'
+  description: 'Schedule activity'
+  route_name: bt_activities.add_page
+  parent: bt_activities_menu
+  weight: 0
+  menu_name: bt-menu-app
+
+bt_activities_opportunities_menu:
+  title: 'Opportunities'
+  description: 'List of all detected opportunities.'
+  route_name: page_manager.page_view_app_activities_opportunities_app_activities_opportunities-panels_variant-0
+  parent: bt_activities_menu
+  weight: 1
+  menu_name: bt-menu-app
+
+bt_activities_opportunities_add_menu:
+  title: 'Add opportunity'
+  description: 'Add opportunity'
+  route_name: page_manager.page_view_bt_create_opportunity_bt_create_opportunity-panels_variant-0
+  parent: bt_activities_opportunities_menu
+  weight: 0
+  menu_name: bt-menu-app

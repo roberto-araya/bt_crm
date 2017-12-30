@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - address
+    - field_permissions
+    - redhen_org
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: redhen_org.field_bt_address
+field_name: field_bt_address
+entity_type: redhen_org
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

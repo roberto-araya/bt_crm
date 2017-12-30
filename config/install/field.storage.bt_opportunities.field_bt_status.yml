@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+    - options
+id: bt_opportunities.field_bt_status
+field_name: field_bt_status
+entity_type: bt_opportunities
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: queued
+      label: 'Queued'
+    -
+      value: current
+      label: Current
+    -
+      value: earned
+      label: Earned
+    -
+      value: missed
+      label: Missed
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

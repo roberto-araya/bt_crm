@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.bt_activities
+name: 'Phone Call'
+type: bt_schedule_phone_call
+description: 'Allows you to remember to make a phone call on a specific issue to a specific contact.'

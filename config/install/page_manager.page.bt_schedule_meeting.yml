@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: bt_schedule_meeting
+label: 'Schedule Meeting'
+description: 'Form page to schedule a meeting.'
+use_admin_theme: true
+path: /app/bt_activities/schedule/activity/bt_schedule_meeting
+access_logic: and
+access_conditions:
+  -
+    id: user_role
+    roles:
+      bt_manage_crm: bt_manage_crm
+      bt_use_crm: bt_use_crm
+    negate: false
+    context_mapping:
+      user: current_user
+parameters: {  }

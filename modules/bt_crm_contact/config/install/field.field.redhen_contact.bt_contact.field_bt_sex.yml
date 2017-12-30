@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.redhen_contact.field_bt_sex
+    - redhen_contact.redhen_contact_type.bt_contact
+  module:
+    - options
+id: redhen_contact.bt_contact.field_bt_sex
+field_name: field_bt_sex
+entity_type: redhen_contact
+bundle: bt_contact
+label: Sex
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

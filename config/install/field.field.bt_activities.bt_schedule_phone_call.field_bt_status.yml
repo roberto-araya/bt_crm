@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.bt_activities.bt_schedule_phone_call
+    - field.storage.bt_activities.field_bt_status
+  module:
+    - options
+id: bt_activities.bt_schedule_phone_call.field_bt_status
+field_name: field_bt_status
+entity_type: bt_activities
+bundle: bt_schedule_phone_call
+label: Status
+description: 'Select the activity status.'
+required: true
+translatable: false
+default_value:
+  -
+    value: pending
+default_value_callback: ''
+settings: {  }
+field_type: list_string
