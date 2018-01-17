@@ -9,7 +9,6 @@ use Drupal\Core\Session\AccountInterface;
 
 /**
  * Defines the access control handler for the Redhen contact type entity type.
- *
  */
 class RedhenContactTypeAccessControlHandler extends EntityAccessControlHandler {
 

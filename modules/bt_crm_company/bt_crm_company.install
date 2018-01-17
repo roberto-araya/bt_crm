@@ -1,6 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Install, update and uninstall functions for bt_crm_company.
+ */
+
+/**
+ * Implements hook_install().
+ */
 function bt_crm_company_install() {
-    //Add path alias
-    \Drupal::service('path.alias_storage')->save('/app/contacts/add/organization/bt_company', '/app/contacts/add/organization/company', 'en');
+  // Add path alias.
+  \Drupal::service('path.alias_storage')->save('/app/contacts/add/organization/bt_company', '/app/contacts/add/organization/company', 'en');
 }

@@ -4,21 +4,21 @@ description: 'Btester CRM'
 core: 8.x
 version: 8.x-1.x
 dependencies:
-  - bt_core
-  - redhen
-  - redhen_connection
-  - redhen_contact
-  - redhen_org
-  - rut
-  - rut_field
-  - telephone
-  - workbench_moderation
-  - address
-  - field_collection
-  - field_group
-  - field_states_ui
-  - maxlength
-  - pathauto
-  - datetime
-  - eck
+  - address:address
+  - bt_core:bt_core
+  - drupal:datetime
+  - drupal:telephone
+  - eck:eck
+  - field_collection:field_collection
+  - field_group:field_group
+  - field_states_ui:field_states_ui
+  - maxlength:maxlength
+  - pathauto:pathauto
+  - redhen:redhen
+  - redhen:redhen_connection
+  - redhen:redhen_contact
+  - redhen:redhen_org
+  - rut:rut
+  - rut:rut_field
+  - workbench_moderation:workbench_moderation
 package: Btester

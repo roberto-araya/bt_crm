@@ -8,8 +8,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 
 /**
- * Defines the access control handler for the Redhen organization type entity type.
- *
+ * Defines access control handler for the Redhen organization type entity type.
  */
 class RedhenOrgTypeAccessControlHandler extends EntityAccessControlHandler {
 

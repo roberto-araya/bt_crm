@@ -1,36 +1,45 @@
 <?php
 
+/**
+ * @file
+ * Install, update and uninstall functions for bt_crm.
+ */
+
+/**
+ * Implements hook_install().
+ */
 function bt_crm_install() {
-    //Add path alias
-    \Drupal::service('path.alias_storage')->save('/app/bt_activities/schedule/activity/bt_schedule_email', '/app/activities/schedule/activity/email', 'en');
-    \Drupal::service('path.alias_storage')->save('/app/bt_activities/schedule/activity/bt_schedule_phone_call', '/app/activities/schedule/activity/phone-call', 'en');
-    \Drupal::service('path.alias_storage')->save('/app/bt_activities/schedule/activity/bt_schedule_meeting', '/app/activities/schedule/activity/meeting', 'en');
-    \Drupal::service('path.alias_storage')->save('/app/bt_activities/schedule/activity/bt_schedule_visit', '/app/activities/schedule/activity/visit', 'en');
-    \Drupal::service('path.alias_storage')->save('/app/bt_activities/bt_opportunities/create/bt_opportunity', '/app/activities/opportunities/create/oportunity', 'en');
+  // Add path alias.
+  \Drupal::service('path.alias_storage')->save('/app/bt_activities/schedule/activity/bt_schedule_email', '/app/activities/schedule/activity/email', 'en');
+  \Drupal::service('path.alias_storage')->save('/app/bt_activities/schedule/activity/bt_schedule_phone_call', '/app/activities/schedule/activity/phone-call', 'en');
+  \Drupal::service('path.alias_storage')->save('/app/bt_activities/schedule/activity/bt_schedule_meeting', '/app/activities/schedule/activity/meeting', 'en');
+  \Drupal::service('path.alias_storage')->save('/app/bt_activities/schedule/activity/bt_schedule_visit', '/app/activities/schedule/activity/visit', 'en');
+  \Drupal::service('path.alias_storage')->save('/app/bt_activities/bt_opportunities/create/bt_opportunity', '/app/activities/opportunities/create/oportunity', 'en');
 
-    // Remove redhen menu items from admin menu
-    $items = [
-        'entity.redhen_contact.collection',
-        'entity.redhen_org.collection',
-        'entity.redhen_connection.collection',
-        'redhen.dashboard'
-    ];
-    foreach ($items as $item) {
-        $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
-        $def['enabled'] = 0;
-        $menu_link_manager->updateDefinition($item, $def);
-    }
+  // Remove redhen menu items from admin menu.
+  $items = [
+    'entity.redhen_contact.collection',
+    'entity.redhen_org.collection',
+    'entity.redhen_connection.collection',
+    'redhen.dashboard',
+  ];
+  foreach ($items as $item) {
+    $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
+    $def['enabled'] = 0;
+    $menu_link_manager->updateDefinition($item, $def);
+  }
 
-    //Add create_redhen_contact handler to webform contact form.
-    $webform_contacto = \Drupal::configFactory()->getEditable('webform.webform.contact');
-    $handlers = $webform_contacto->get('handlers');
-    $handlers['create_a_redhen_contact'] =  [
-        'id' => 'create_redhen_contact',
-        'label' => t('Create a contact of type prospect client'),
-        'handler_id' => 'create_a_redhen_contact',
-        'status' => true,
-        'weight' => 1,
-        'settings' => array()
-    ];
-    $webform_contacto->set('handlers', $handlers)->save(TRUE);
+  // Add create_redhen_contact handler to webform contact form.
+  $webform_contacto = \Drupal::configFactory()->getEditable('webform.webform.contact');
+  $handlers = $webform_contacto->get('handlers');
+  $handlers['create_a_redhen_contact'] = [
+    'id' => 'create_redhen_contact',
+    'label' => t('Create a contact of type prospect client'),
+    'handler_id' => 'create_a_redhen_contact',
+    'status' => TRUE,
+    'weight' => 1,
+    'settings' => array(),
+  ];
+  $webform_contacto->set('handlers', $handlers)->save(TRUE);
+
 }

@@ -23,8 +23,8 @@ class OpportunitiesDeleteForm extends ContentEntityConfirmFormBase {
   /**
    * {@inheritdoc}
    */
-  public function getCancelURL() {
-    return new Url('entity.bt_opportunities.canonical',['bt_opportunities' => $this->entity->id() ]);
+  public function getCancelUrl() {
+    return new Url('entity.bt_opportunities.canonical', ['bt_opportunities' => $this->entity->id()]);
   }
 
   /**

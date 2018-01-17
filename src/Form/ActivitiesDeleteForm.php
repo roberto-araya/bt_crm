@@ -23,8 +23,8 @@ class ActivitiesDeleteForm extends ContentEntityConfirmFormBase {
   /**
    * {@inheritdoc}
    */
-  public function getCancelURL() {
-    return new Url('entity.bt_activities.canonical',['bt_activities' => $this->entity->id() ]);
+  public function getCancelUrl() {
+    return new Url('entity.bt_activities.canonical', ['bt_activities' => $this->entity->id()]);
   }
 
   /**
@@ -48,4 +48,5 @@ class ActivitiesDeleteForm extends ContentEntityConfirmFormBase {
       ));
     $form_state->setRedirectUrl(new Url('page_manager.page_view_app_activities_app_activities-panels_variant-0'));
   }
+
 }

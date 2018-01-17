@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\bt_crm\Form\ContactosDeleteForm.
- */
-
 namespace Drupal\bt_crm\Form;
 
 use Drupal\Core\Entity\ContentEntityDeleteForm;
@@ -18,40 +13,41 @@ use Drupal\Core\Url;
  */
 class ContactsDeleteForm extends ContentEntityDeleteForm {
 
-    /**
-     * {@inheritdoc}
-     */
-    public function submitForm(array &$form, FormStateInterface $form_state) {
-        /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
-        $entity = $this->getEntity();
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
+    $entity = $this->getEntity();
 
-        // Make sure that deleting a translation does not delete the whole entity.
-        if (!$entity->isDefaultTranslation()) {
-            $untranslated_entity = $entity->getUntranslated();
-            $untranslated_entity->removeTranslation($entity->language()->getId());
-            $untranslated_entity->save();
-            $form_state->setRedirectUrl($untranslated_entity->urlInfo('canonical'));
-        }
-        else {
-            $entity->delete();
-            $form_state->setRedirectUrl(new Url('page_manager.page_view_app_persons_app_persons-panels_variant-0'));
-        }
-
-        drupal_set_message($this->getDeletionMessage());
-        $this->logDeletionMessage();
+    // Make sure that deleting a translation does not delete the whole entity.
+    if (!$entity->isDefaultTranslation()) {
+      $untranslated_entity = $entity->getUntranslated();
+      $untranslated_entity->removeTranslation($entity->language()->getId());
+      $untranslated_entity->save();
+      $form_state->setRedirectUrl($untranslated_entity->urlInfo('canonical'));
+    }
+    else {
+      $entity->delete();
+      $form_state->setRedirectUrl(new Url('page_manager.page_view_app_persons_app_persons-panels_variant-0'));
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getCancelUrl() {
-        return new Url('entity.redhen_contact.canonical',['redhen_contact' => $this->entity->id() ]);
-    }
+    drupal_set_message($this->getDeletionMessage());
+    $this->logDeletionMessage();
+  }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getQuestion() {
-        return $this->t('¿Are you sure you want to eliminate the contact %title?', array('%title' => $this->entity->label()));
-    }
+  /**
+   * {@inheritdoc}
+   */
+  public function getCancelUrl() {
+    return new Url('entity.redhen_contact.canonical', ['redhen_contact' => $this->entity->id()]);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getQuestion() {
+    return $this->t('¿Are you sure you want to eliminate the contact %title?', array('%title' => $this->entity->label()));
+  }
+
 }

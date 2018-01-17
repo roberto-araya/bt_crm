@@ -9,11 +9,8 @@ use Drupal\Core\Session\AccountInterface;
 
 /**
  * Defines the access control handler for the bt_opportunities entity type.
- *
  */
 class OpportunitiesAccessControlHandler extends EntityAccessControlHandler {
-
-  //protected $viewLabelOperation = TRUE;
 
   /**
    * {@inheritdoc}
@@ -22,6 +19,7 @@ class OpportunitiesAccessControlHandler extends EntityAccessControlHandler {
     switch ($operation) {
       case 'view':
         return AccessResult::allowedIfHasPermission($account, 'create bt_opportunities entities');
+
       default:
         return parent::checkAccess($entity, $operation, $account);
     }

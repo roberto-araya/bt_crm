@@ -9,7 +9,6 @@ use Drupal\Core\Session\AccountInterface;
 
 /**
  * Defines the access control handler for the bt_activities entity type.
- *
  */
 class ActivitiesAccessControlHandler extends EntityAccessControlHandler {
 
@@ -20,8 +19,11 @@ class ActivitiesAccessControlHandler extends EntityAccessControlHandler {
     switch ($operation) {
       case 'view':
         return AccessResult::allowedIfHasPermission($account, 'create bt_activities entities');
+
       default:
         return parent::checkAccess($entity, $operation, $account);
     }
+
   }
+
 }

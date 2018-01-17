@@ -2,22 +2,22 @@
 
 /**
  * @file
- * Contains bt_crm_client.module.
+ * Module file for bt_crm_client.
  */
 
-use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Implements hook_help().
  */
-function bt_crm_client_help($route_name, RouteMatchInterface $route_match) {
+function bt_crm_client_help($route_name) {
   switch ($route_name) {
     // Main module help for the bt_crm_client module.
     case 'help.page.bt_crm_client':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
       $output .= '<p>' . t('Btester CRM Client') . '</p>';
+
       return $output;
 
     default:
@@ -35,18 +35,16 @@ function bt_crm_client_theme() {
   ];
 }
 
-
 /**
  * Implements hook_ENTITY_TYPE_insert().
- *
- * @param \Drupal\Core\Entity\EntityInterface $entity
  */
 function bt_crm_client_redhen_contact_insert(EntityInterface $entity) {
-    // Convert to lowercase, trim spaces, replace spaces with underscore and then truncate to 60 chars.
-    $pathTitle = substr(str_replace(" ","-",trim(strtolower($entity->label()))),0,60);
-    if ($entity->bundle() == 'bt_client') {
-        \Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id(), "/app/contacts/persons/client/" . $pathTitle, "en");
-        \Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/edit', "/app/contacts/persons/client/" . $pathTitle . '/edit', "en");
-        \Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/delete', "/app/contacts/persons/client/" . $pathTitle . '/delete', "en");
-    }
+  // Convert to lowercase, trim spaces,
+  // replace spaces with underscore and then truncate to 60 chars.
+  $pathTitle = substr(str_replace(" ", "-", trim(strtolower($entity->label()))), 0, 60);
+  if ($entity->bundle() == 'bt_client') {
+    \Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id(), "/app/contacts/persons/client/" . $pathTitle, "en");
+    \Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/edit', "/app/contacts/persons/client/" . $pathTitle . '/edit', "en");
+    \Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/delete', "/app/contacts/persons/client/" . $pathTitle . '/delete', "en");
+  }
 }

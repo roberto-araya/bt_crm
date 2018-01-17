@@ -1,6 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Install, update and uninstall functions for bt_crm_contact.
+ */
+
+/**
+ * Implements hook_install().
+ */
 function bt_crm_contact_install() {
-    //Add path alias
-    \Drupal::service('path.alias_storage')->save('/app/contacts/add/person/bt_contact', '/app/contacts/add/person/contact', 'en');
+  // Add path alias.
+  \Drupal::service('path.alias_storage')->save('/app/contacts/add/person/bt_contact', '/app/contacts/add/person/contact', 'en');
 }
