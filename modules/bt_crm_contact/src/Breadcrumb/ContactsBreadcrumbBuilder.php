@@ -17,7 +17,7 @@ class ContactsBreadcrumbBuilder implements BreadcrumbBuilderInterface {
   /**
    * The routes that will change their breadcrumbs.
    *
-   * @var routes
+   * @var array
    */
   private $routes = array(
     'page_manager.page_view_bt_add_contact_bt_add_contact-panels_variant-0',

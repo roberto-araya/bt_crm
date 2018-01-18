@@ -17,7 +17,7 @@ class ActivitiesBreadcrumbBuilder implements BreadcrumbBuilderInterface {
   /**
    * The routes that will change their breadcrumbs.
    *
-   * @var routes
+   * @var array
    */
   private $routes = array(
     'page_manager.page_view_app_activities_app_activities-panels_variant-0',
