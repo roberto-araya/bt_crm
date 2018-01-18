@@ -5,13 +5,16 @@ services:
       - { name: event_subscriber }
   bt_crm.contacts_breadcrumbs:
     class: Drupal\bt_crm\Breadcrumb\ContactsBreadcrumbBuilder
+    arguments: ['@config.factory']
     tags:
       - { name: breadcrumb_builder, priority: 1009 }
   bt_crm.activities_breadcrumbs:
     class: Drupal\bt_crm\Breadcrumb\ActivitiesBreadcrumbBuilder
+    arguments: ['@config.factory']
     tags:
       - { name: breadcrumb_builder, priority: 1009 }
   bt_crm.opportunities_breadcrumbs:
     class: Drupal\bt_crm\Breadcrumb\OpportunitiesBreadcrumbBuilder
+    arguments: ['@config.factory']
     tags:
       - { name: breadcrumb_builder, priority: 1009 }

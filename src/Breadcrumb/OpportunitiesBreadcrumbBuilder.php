@@ -6,6 +6,7 @@ use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Config\ConfigFactory;
 
 /**
  * Class OpportunitiesBreadcrumbBuilder.
@@ -13,6 +14,13 @@ use Drupal\Core\Link;
  * @package Drupal\bt_crm\Breadcrumb
  */
 class OpportunitiesBreadcrumbBuilder implements BreadcrumbBuilderInterface {
+
+  /**
+   * The site name.
+   *
+   * @var string
+   */
+  private $siteName;
 
   /**
    * The routes that will change their breadcrumbs.
@@ -26,6 +34,13 @@ class OpportunitiesBreadcrumbBuilder implements BreadcrumbBuilderInterface {
     'entity.bt_opportunities.delete_form',
     'page_manager.page_view_bt_create_opportunity_bt_create_opportunity-panels_variant-0',
   );
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(ConfigFactory $configFactory) {
+    $this->siteName = $configFactory->get('system.site')->get('name');
+  }
 
   /**
    * {@inheritdoc}
@@ -47,13 +62,12 @@ class OpportunitiesBreadcrumbBuilder implements BreadcrumbBuilderInterface {
     $route = $route_match->getRouteName();
     $breadcrumb = new Breadcrumb();
     $breadcrumb->addCacheContexts(["url"]);
-    $site_name = \Drupal::config('system.site')->get('name');
 
     if ($route == 'page_manager.page_view_app_activities_opportunities_app_activities_opportunities-panels_variant-0') {
-      $breadcrumb->addLink(Link::createFromRoute($site_name, 'page_manager.page_view_app_app-panels_variant-0'));
+      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'page_manager.page_view_app_app-panels_variant-0'));
     }
     else {
-      $breadcrumb->addLink(Link::createFromRoute($site_name, 'page_manager.page_view_app_app-panels_variant-0'));
+      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'page_manager.page_view_app_app-panels_variant-0'));
       $breadcrumb->addLink(Link::createFromRoute('Opportunities', 'page_manager.page_view_app_activities_opportunities_app_activities_opportunities-panels_variant-0'));
     }
 

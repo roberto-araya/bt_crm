@@ -6,6 +6,7 @@ use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Config\ConfigFactory;
 
 /**
  * Class ActivitiesBreadcrumbBuilder.
@@ -13,6 +14,13 @@ use Drupal\Core\Link;
  * @package Drupal\bt_crm\Breadcrumb.
  */
 class ActivitiesBreadcrumbBuilder implements BreadcrumbBuilderInterface {
+
+  /**
+   * The site name.
+   *
+   * @var string
+   */
+  private $siteName;
 
   /**
    * The routes that will change their breadcrumbs.
@@ -34,6 +42,13 @@ class ActivitiesBreadcrumbBuilder implements BreadcrumbBuilderInterface {
   /**
    * {@inheritdoc}
    */
+  public function __construct(ConfigFactory $configFactory) {
+    $this->siteName = $configFactory->get('system.site')->get('name');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function applies(RouteMatchInterface $attributes) {
     $match = $this->routes;
     if (in_array($attributes->getRouteName(), $match)) {
@@ -51,13 +66,12 @@ class ActivitiesBreadcrumbBuilder implements BreadcrumbBuilderInterface {
     $route = $route_match->getRouteName();
     $breadcrumb = new Breadcrumb();
     $breadcrumb->addCacheContexts(["url"]);
-    $site_name = \Drupal::config('system.site')->get('name');
 
     if ($route == 'page_manager.page_view_app_activities_app_activities-panels_variant-0') {
-      $breadcrumb->addLink(Link::createFromRoute($site_name, 'page_manager.page_view_app_app-panels_variant-0'));
+      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'page_manager.page_view_app_app-panels_variant-0'));
     }
     else {
-      $breadcrumb->addLink(Link::createFromRoute($site_name, 'page_manager.page_view_app_app-panels_variant-0'));
+      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'page_manager.page_view_app_app-panels_variant-0'));
       $breadcrumb->addLink(Link::createFromRoute('Activities', 'page_manager.page_view_app_activities_app_activities-panels_variant-0'));
     }
     if (preg_match("/page_manager.page_view_bt_schedule_/", $route)) {
