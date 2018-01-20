@@ -16,7 +16,7 @@ class ConfigCrmSupplierOverride implements ConfigFactoryOverrideInterface {
   /**
    * Field field_bt_organization.
    *
-   * @var fieldBtOrganization
+   * @var
    */
   private $fieldBtOrganization;
 
@@ -39,7 +39,7 @@ class ConfigCrmSupplierOverride implements ConfigFactoryOverrideInterface {
     ];
     // field.field.bt_opportunities.bt_opportunity.field_bt_organization.
     if (in_array('field.field.bt_opportunities.bt_opportunity.field_bt_organization', $names)) {
-      $field = $this->field_bt_organization;
+      $field = $this->fieldBtOrganization;
       $filter_values = $field->get('settings.handler_settings.target_bundles');
       $values = array_merge($filter_values, $client_values);
       $overrides['field.field.bt_opportunities.bt_opportunity.field_bt_organization']['settings']['handler_settings']['target_bundles'] = $values;

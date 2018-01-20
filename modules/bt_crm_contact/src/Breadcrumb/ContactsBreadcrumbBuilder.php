@@ -39,7 +39,7 @@ class ContactsBreadcrumbBuilder implements BreadcrumbBuilderInterface {
   /**
    * {@inheritdoc}
    */
-  public function build() {
+  public function build(RouteMatchInterface $route_match) {
     $breadcrumb = new Breadcrumb();
     $breadcrumb->addCacheContexts(["url"]);
     $site_name = \Drupal::config('system.site')->get('name');

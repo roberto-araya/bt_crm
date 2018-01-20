@@ -50,6 +50,7 @@ class ActivitiesBreadcrumbBuilder implements BreadcrumbBuilderInterface {
    * {@inheritdoc}
    */
   public function applies(RouteMatchInterface $attributes) {
+
     $match = $this->routes;
     if (in_array($attributes->getRouteName(), $match)) {
       return TRUE;
