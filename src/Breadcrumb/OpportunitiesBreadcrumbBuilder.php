@@ -27,13 +27,13 @@ class OpportunitiesBreadcrumbBuilder implements BreadcrumbBuilderInterface {
    *
    * @var array
    */
-  private $routes = array(
+  private $routes = [
     'page_manager.page_view_app_activities_opportunities_app_activities_opportunities-panels_variant-0',
     'entity.bt_opportunities.canonical',
     'entity.bt_opportunities.edit_form',
     'entity.bt_opportunities.delete_form',
-    'page_manager.page_view_bt_create_opportunity_bt_create_opportunity-panels_variant-0',
-  );
+    'bt_opportunities.add',
+  ];
 
   /**
    * {@inheritdoc}

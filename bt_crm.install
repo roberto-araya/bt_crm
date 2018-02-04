@@ -14,7 +14,7 @@ function bt_crm_install() {
   \Drupal::service('path.alias_storage')->save('/app/bt_activities/schedule/activity/bt_schedule_phone_call', '/app/activities/schedule/activity/phone-call', 'en');
   \Drupal::service('path.alias_storage')->save('/app/bt_activities/schedule/activity/bt_schedule_meeting', '/app/activities/schedule/activity/meeting', 'en');
   \Drupal::service('path.alias_storage')->save('/app/bt_activities/schedule/activity/bt_schedule_visit', '/app/activities/schedule/activity/visit', 'en');
-  \Drupal::service('path.alias_storage')->save('/app/bt_activities/bt_opportunities/create/bt_opportunity', '/app/activities/opportunities/create/oportunity', 'en');
+  \Drupal::service('path.alias_storage')->save('/app/activities/bt_opportunities/create/bt_opportunity', '/app/activities/opportunities/create/opportunity', 'en');
 
   // Remove redhen menu items from admin menu.
   $items = [
@@ -23,6 +23,7 @@ function bt_crm_install() {
     'entity.redhen_connection.collection',
     'redhen.dashboard',
   ];
+
   foreach ($items as $item) {
     $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
     $def['enabled'] = 0;

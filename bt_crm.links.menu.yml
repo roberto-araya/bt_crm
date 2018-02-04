@@ -63,7 +63,10 @@ bt_activities_opportunities_menu:
 bt_activities_opportunities_add_menu:
   title: 'Add opportunity'
   description: 'Add opportunity'
-  route_name: page_manager.page_view_bt_create_opportunity_bt_create_opportunity-panels_variant-0
+  route_name: 'bt_opportunities.add'
+  route_parameters:
+    eck_entity_type: bt_opportunities
+    eck_entity_bundle: bt_opportunity
   parent: bt_activities_opportunities_menu
   weight: 0
   menu_name: bt-menu-app

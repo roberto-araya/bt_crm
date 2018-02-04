@@ -1,8 +1,4 @@
 services:
-  bt_crm_company.contacts_breadcrumbs:
-    class: Drupal\bt_crm_company\Breadcrumb\ContactsBreadcrumbBuilder
-    tags:
-      - { name: breadcrumb_builder, priority: 1009 }
   bt_crm_company_config.overrider:
     class: Drupal\bt_crm_company\Config\ConfigCrmCompanyOverride
     arguments: ['@config.factory',]
