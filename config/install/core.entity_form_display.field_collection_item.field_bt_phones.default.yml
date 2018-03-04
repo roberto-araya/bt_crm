@@ -7,7 +7,6 @@ dependencies:
     - field_collection.field_collection.field_bt_phones
   module:
     - telephone
-    - workbench_moderation
 id: field_collection_item.field_bt_phones.default
 targetEntityType: field_collection_item
 bundle: field_bt_phones

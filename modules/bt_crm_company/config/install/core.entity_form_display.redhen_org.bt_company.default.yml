@@ -18,7 +18,6 @@ dependencies:
     - link
     - rut_field
     - text
-    - workbench_moderation
 third_party_settings:
   field_group:
     general_information_group:

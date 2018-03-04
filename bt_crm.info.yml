@@ -20,5 +20,4 @@ dependencies:
   - redhen:redhen_org
   - rut:rut
   - rut:rut_field
-  - workbench_moderation:workbench_moderation
 package: Btester

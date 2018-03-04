@@ -14,7 +14,6 @@ dependencies:
     - field_states_ui
     - maxlength
     - rut_field
-    - workbench_moderation
 third_party_settings:
   field_group:
     personal_information_group:

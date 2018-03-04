@@ -13,7 +13,6 @@ dependencies:
     - field_group
     - field_states_ui
     - rut_field
-    - workbench_moderation
 third_party_settings:
   field_group:
     personal_information_group:
