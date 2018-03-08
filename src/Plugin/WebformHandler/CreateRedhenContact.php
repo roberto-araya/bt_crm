@@ -3,14 +3,16 @@
 namespace Drupal\bt_crm\Plugin\WebformHandler;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\webform\WebformHandlerBase;
+use Drupal\webform\Plugin\WebformHandlerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Psr\Log\LoggerInterface;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\redhen_contact\Entity\Contact;
 use Drupal\field_collection\Entity\FieldCollectionItem;
 use Drupal\webform\WebformSubmissionInterface;
+use Drupal\webform\WebformSubmissionConditionsValidatorInterface;
 
 /**
  * Form submission handler.
@@ -36,8 +38,8 @@ class CreateRedhenContact extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerInterface $logger, EntityTypeManagerInterface $entity_type_manager, QueryFactory $entityQuery) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $logger, $entity_type_manager);
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerChannelFactoryInterface $logger, ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager, WebformSubmissionConditionsValidatorInterface $conditions_validator, QueryFactory $entityQuery) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $logger, $config_factory, $entity_type_manager, $conditions_validator);
 
     $this->entityQuery = $entityQuery;
   }
@@ -50,8 +52,10 @@ class CreateRedhenContact extends WebformHandlerBase {
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('logger.factory')->get('webform'),
+      $container->get('logger.factory'),
+      $container->get('config.factory'),
       $container->get('entity_type.manager'),
+      $container->get('webform_submission.conditions_validator'),
       $container->get('entity.query')
     );
   }
