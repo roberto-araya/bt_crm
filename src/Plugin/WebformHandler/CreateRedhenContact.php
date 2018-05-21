@@ -64,9 +64,10 @@ class CreateRedhenContact extends WebformHandlerBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
+    $data = $webform_submission->getData();
     $query = $this->entityQuery->get('redhen_contact');
     // We need to know if the person sending the form exist in the CRM.
-    $query->condition('email', $webform_submission->getData('email'));
+    $query->condition('email', $data['email']);
     $entity_ids = $query->execute();
 
     // If don't exist then we create it.
@@ -74,19 +75,22 @@ class CreateRedhenContact extends WebformHandlerBase {
       // Create a new redhen_contact of type bt_potential_client.
       $prospect = Contact::create(['type' => 'bt_potential_client']);
       // Set fields.
-      $prospect->setEmail($webform_submission->getData('email'));
-      $prospect->set('first_name', $webform_submission->getData('name'));
+      $prospect->setEmail($data['email']);
+      $prospect->set('first_name', $data['name']);
       $prospect->save();
+
       // Set phone field collection.
-      $fc = FieldCollectionItem::create(['field_name' => 'field_bt_phones']);
-      $fc->field_bt_phone_type->setValue('movil');
-      $fc->field_bt_phone->setValue($webform_submission->getData('phone'));
-      $fc->setHostEntity($prospect);
-      $fc->save();
-      // Link field collection with prospect client object
-      // and save prospect in the CRM.
-      $prospect->field_bt_phones[] = ['field_collection_item' => $fc];
-      $prospect->save();
+      if (!empty($data['phone'])) {
+        $fc = FieldCollectionItem::create(['field_name' => 'field_bt_phones']);
+        $fc->field_bt_phone_type->setValue('movil');
+        $fc->field_bt_phone->setValue($data['phone']);
+        $fc->setHostEntity($prospect);
+        $fc->save();
+        // Link field collection with prospect client object
+        // and save prospect in the CRM.
+        $prospect->field_bt_phones[] = ['field_collection_item' => $fc];
+        $prospect->save();
+      }
     }
   }
 
