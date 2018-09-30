@@ -45,6 +45,7 @@ function bt_crm_entity_type_alter(array &$entity_types) {
 
   if (array_key_exists('redhen_contact', $entity_types)) {
     $entity_types['redhen_contact']->setFormClass('delete', 'Drupal\bt_crm\Form\ContactsDeleteForm');
+    $entity_types['redhen_contact']->setHandlerClass('views_data', 'Drupal\bt_crm\ContactViewsData');
     $entity_types['redhen_contact']->setLinkTemplate('convert-to-client', "/app/contacts/persons/{redhen_contact}/convert-to-client");
   }
   if (array_key_exists('redhen_org', $entity_types)) {
