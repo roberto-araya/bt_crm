@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\path_alias\Entity\PathAlias;
 
 /**
  * Implements hook_help().
@@ -43,8 +44,25 @@ function bt_crm_contact_redhen_contact_insert(EntityInterface $entity) {
   // replace spaces with underscore and then truncate to 60 chars.
   $pathTitle = substr(str_replace(" ", "-", trim(strtolower($entity->label()))), 0, 60);
   if ($entity->bundle() == 'bt_contact') {
-    \Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id(), "/app/contacts/persons/contact/" . $pathTitle, "en");
-    \Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/edit', "/app/contacts/persons/contact/" . $pathTitle . '/edit', "en");
-    \Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/delete', "/app/contacts/persons/contact/" . $pathTitle . '/delete', "en");
+    $path_alias = PathAlias::create([
+      'path' => "/app/contacts/persons/" . $entity->id(),
+      'alias' => "/app/contacts/persons/contact/" . $pathTitle,
+    ]);
+    $path_alias->save();
+
+    $path_alias = PathAlias::create([
+      'path' => "/app/contacts/persons/" . $entity->id() . "/edit",
+      'alias' => "/app/contacts/persons/contact/" . $pathTitle . "/edit",
+    ]);
+    $path_alias->save();
+
+    $path_alias = PathAlias::create([
+      'path' => "/app/contacts/persons/" . $entity->id() . "/delete",
+      'alias' => "/app/contacts/persons/contact/" . $pathTitle . "/delete",
+    ]);
+    $path_alias->save();
+    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id(), "/app/contacts/persons/contact/" . $pathTitle, "en");
+    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/edit', "/app/contacts/persons/contact/" . $pathTitle . '/edit', "en");
+    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/delete', "/app/contacts/persons/contact/" . $pathTitle . '/delete', "en");
   }
 }

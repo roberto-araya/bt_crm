@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies:
-  config:
-    - eck.eck_entity_type.bt_activities
-name: 'Email'
-type: bt_schedule_email
-description: 'Allows you to remember to write an email on a subject specific to a particular contact.'

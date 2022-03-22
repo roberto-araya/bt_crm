@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies:
-  config:
-    - eck.eck_entity_type.bt_opportunities
-name: Opportunity
-type: bt_opportunity
-description: 'Describes a business opportunity related to a contact or organization.'

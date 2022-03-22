@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   module:
-    - field_collection
+    - bt_core
     - field_permissions
     - redhen_org
 third_party_settings:
@@ -11,10 +11,10 @@ third_party_settings:
 id: redhen_org.field_bt_phones
 field_name: field_bt_phones
 entity_type: redhen_org
-type: field_collection
+type: entity_reference
 settings:
-  target_type: field_collection_item
-module: field_collection
+  target_type: multifield
+module: core
 locked: false
 cardinality: -1
 translatable: true

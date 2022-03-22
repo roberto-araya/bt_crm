@@ -52,7 +52,7 @@ class ConvertPotentialToClientConfirm extends FormBase {
           '#attributes' => array(
             'class' => array('button'),
           ),
-          '#url' => Url::fromRoute('page_manager.page_view_app_persons_app_persons-panels_variant-0'),
+          '#url' => Url::fromRoute('bt_crm.persons'),
           '#cache' => array(
             'contexts' => array(
               'url.query_args:destination',
@@ -79,7 +79,7 @@ class ConvertPotentialToClientConfirm extends FormBase {
           '#attributes' => array(
             'class' => array('button'),
           ),
-          '#url' => Url::fromRoute('page_manager.page_view_app_persons_app_persons-panels_variant-0'),
+          '#url' => Url::fromRoute('bt_crm.persons'),
           '#cache' => array(
             'contexts' => array(
               'url.query_args:destination',

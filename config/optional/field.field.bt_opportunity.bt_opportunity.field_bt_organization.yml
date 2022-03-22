@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.bt_opportunity.field_bt_organization
+    - redhen_org.redhen_org_type.bt_company
+    - redhen_org.redhen_org_type.bt_supplier
+  module:
+    - bt_crm_company
+    - bt_crm_supplier
+id: bt_opportunity.bt_opportunity.field_bt_organization
+field_name: field_bt_organization
+entity_type: bt_opportunity
+bundle: bt_opportunity
+label: Organization
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:redhen_org'
+  handler_settings:
+    target_bundles:
+      bt_company: bt_company
+      bt_suppier: bt_supplier
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

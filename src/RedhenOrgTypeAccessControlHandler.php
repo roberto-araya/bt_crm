@@ -31,7 +31,6 @@ class RedhenOrgTypeAccessControlHandler extends EntityAccessControlHandler {
 
       default:
         return parent::checkAccess($entity, $operation, $account);
-
     }
   }
 

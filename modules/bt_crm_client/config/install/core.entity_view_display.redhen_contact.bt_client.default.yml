@@ -1,0 +1,68 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.redhen_contact.bt_client.field_bt_address
+    - field.field.redhen_contact.bt_client.field_bt_phones
+    - field.field.redhen_contact.bt_client.field_bt_rut
+    - field.field.redhen_contact.bt_client.field_bt_sex
+    - redhen_contact.redhen_contact_type.bt_client
+  module:
+    - address
+    - options
+    - rut_field
+id: redhen_contact.bt_client.default
+targetEntityType: redhen_contact
+bundle: bt_client
+mode: default
+content:
+  email:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_bt_address:
+    type: address_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_bt_phones:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_bt_rut:
+    type: rut_field_formatter_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_bt_sex:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  uid:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  first_name: true
+  langcode: true
+  last_name: true
+  middle_name: true

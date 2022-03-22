@@ -1,19 +1,19 @@
-name: 'Btester CRM'
+name: Btester CRM
 type: module
 description: 'Btester CRM'
-core: 8.x
-version: 8.x-1.x
+package: Custom
+core_version_requirement: ^8.8 || ^9
 dependencies:
-  - address:address
-  - bt_core:bt_core
+  - drupal:text
   - drupal:datetime
   - drupal:telephone
-  - eck:eck
-  - field_collection:field_collection
+  - bt_core:bt_core
+  - address:address
   - field_group:field_group
   - field_states_ui:field_states_ui
   - maxlength:maxlength
   - pathauto:pathauto
+  - prepopulate:prepopulate
   - redhen:redhen
   - redhen:redhen_connection
   - redhen:redhen_contact

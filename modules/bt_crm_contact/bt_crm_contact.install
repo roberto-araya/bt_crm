@@ -5,10 +5,17 @@
  * Install, update and uninstall functions for bt_crm_contact.
  */
 
+use Drupal\path_alias\Entity\PathAlias;
+
 /**
  * Implements hook_install().
  */
 function bt_crm_contact_install() {
   // Add path alias.
-  \Drupal::service('path.alias_storage')->save('/app/contacts/add/person/bt_contact', '/app/contacts/add/person/contact', 'en');
+  $path_alias = PathAlias::create([
+    'path' => '/app/contacts/add/person/bt_contact',
+    'alias' => '/app/contacts/add/person/contact',
+  ]);
+  $path_alias->save();
+  //\Drupal::service('path.alias_storage')->save('/app/contacts/add/person/bt_contact', '/app/contacts/add/person/contact', 'en');
 }

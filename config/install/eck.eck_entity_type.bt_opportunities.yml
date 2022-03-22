@@ -1,9 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: bt_opportunities
-label: Opportunities
-created: true
-changed: true
-uid: true
-title: true

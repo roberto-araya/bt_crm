@@ -28,14 +28,14 @@ class ContactsBreadcrumbBuilder implements BreadcrumbBuilderInterface {
    * @var array
    */
   private $routes = array(
-    'page_manager.page_view_app_contacts_app_contacts-panels_variant-0',
-    'page_manager.page_view_app_persons_app_persons-panels_variant-0',
+    'bt_crm.contacts',
+    'bt_crm.persons',
     'entity.redhen_contact.canonical',
     'entity.redhen_contact.add_form',
     'entity.redhen_contact.add_page',
     'entity.redhen_contact.edit_form',
     'entity.redhen_contact.delete_form',
-    'page_manager.page_view_app_organizations_app_organizations-panels_variant-0',
+    'bt_crm.organizations',
     'entity.redhen_org.add_form',
     'entity.redhen_org.canonical',
     'entity.redhen_org.add_page',
@@ -71,15 +71,15 @@ class ContactsBreadcrumbBuilder implements BreadcrumbBuilderInterface {
     $breadcrumb = new Breadcrumb();
     $breadcrumb->addCacheContexts(["url"]);
 
-    if ($route == 'page_manager.page_view_app_contacts_app_contacts-panels_variant-0') {
-      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'page_manager.page_view_app_app-panels_variant-0'));
+    if ($route == 'bt_crm.contacts') {
+      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'bt_core.app'));
     }
     else {
-      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'page_manager.page_view_app_app-panels_variant-0'));
-      $breadcrumb->addLink(Link::createFromRoute('Contacts', 'page_manager.page_view_app_contacts_app_contacts-panels_variant-0'));
+      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'bt_core.app'));
+      $breadcrumb->addLink(Link::createFromRoute('Contacts', 'bt_crm.contacts'));
     }
     if (preg_match("/entity.redhen_contact./", $route)) {
-      $breadcrumb->addLink(Link::createFromRoute('Persons', 'page_manager.page_view_app_persons_app_persons-panels_variant-0'));
+      $breadcrumb->addLink(Link::createFromRoute('Persons', 'bt_crm.persons'));
 
       if ($route == 'entity.redhen_contact.add_form') {
         $breadcrumb->addLink(Link::createFromRoute('Add Person', 'entity.redhen_contact.add_page'));
@@ -87,7 +87,7 @@ class ContactsBreadcrumbBuilder implements BreadcrumbBuilderInterface {
     }
 
     if (preg_match("/entity.redhen_org./", $route)) {
-      $breadcrumb->addLink(Link::createFromRoute('Organizations', 'page_manager.page_view_app_organizations_app_organizations-panels_variant-0'));
+      $breadcrumb->addLink(Link::createFromRoute('Organizations', 'bt_crm.organizations'));
 
       if ($route == 'entity.redhen_org.add_form') {
         $breadcrumb->addLink(Link::createFromRoute('Add Organization', 'entity.redhen_org.add_page'));

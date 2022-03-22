@@ -1,0 +1,13 @@
+administer opportunity:
+  title: 'Administer opportunity settings'
+  restrict access: true
+access opportunity overview:
+  title: 'Access opportunity overview page'
+delete opportunity:
+  title: Delete opportunity
+create opportunity:
+  title: Create opportunity
+view opportunity:
+  title: View opportunity
+edit opportunity:
+  title: Edit opportunity

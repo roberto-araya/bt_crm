@@ -8,7 +8,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\redhen_contact\Entity\Contact;
 use Drupal\field_collection\Entity\FieldCollectionItem;
 use Drupal\webform\WebformSubmissionInterface;
@@ -29,22 +28,6 @@ use Drupal\webform\WebformSubmissionConditionsValidatorInterface;
 class CreateRedhenContact extends WebformHandlerBase {
 
   /**
-   * EntityQuery for Redhen contacts.
-   *
-   * @var Drupal\Core\Entity\Query\QueryFactory
-   */
-  protected $entityQuery;
-
-  /**
-   * {@inheritdoc}
-   */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerChannelFactoryInterface $logger, ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager, WebformSubmissionConditionsValidatorInterface $conditions_validator, QueryFactory $entityQuery) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $logger, $config_factory, $entity_type_manager, $conditions_validator);
-
-    $this->entityQuery = $entityQuery;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -56,7 +39,6 @@ class CreateRedhenContact extends WebformHandlerBase {
       $container->get('config.factory'),
       $container->get('entity_type.manager'),
       $container->get('webform_submission.conditions_validator'),
-      $container->get('entity.query')
     );
   }
 
@@ -65,7 +47,8 @@ class CreateRedhenContact extends WebformHandlerBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
     $data = $webform_submission->getData();
-    $query = $this->entityQuery->get('redhen_contact');
+    $query = $this->entityTypeManager->getStorage('redhen_contact')->getQuery();
+
     // We need to know if the person sending the form exist in the CRM.
     $query->condition('email', $data['email']);
     $entity_ids = $query->execute();
@@ -80,7 +63,7 @@ class CreateRedhenContact extends WebformHandlerBase {
       $prospect->save();
 
       // Set phone field collection.
-      if (!empty($data['phone'])) {
+      /*if (!empty($data['phone'])) {
         $fc = FieldCollectionItem::create(['field_name' => 'field_bt_phones']);
         $fc->field_bt_phone_type->setValue('movil');
         $fc->field_bt_phone->setValue($data['phone']);
@@ -90,7 +73,7 @@ class CreateRedhenContact extends WebformHandlerBase {
         // and save prospect in the CRM.
         $prospect->field_bt_phones[] = ['field_collection_item' => $fc];
         $prospect->save();
-      }
+      }*/
     }
   }
 

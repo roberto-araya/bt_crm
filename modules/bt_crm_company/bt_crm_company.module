@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\path_alias\Entity\PathAlias;
 
 /**
  * Implements hook_help().
@@ -44,8 +45,26 @@ function bt_crm_company_redhen_org_insert(EntityInterface $entity) {
   $pathTitle = substr(str_replace(" ", "-", trim(strtolower($entity->label()))), 0, 60);
 
   if ($entity->bundle() == 'bt_company') {
-    \Drupal::service('path.alias_storage')->save("/app/contacts/organization/" . $entity->id(), "/app/contacts/organization/company/" . $pathTitle, "en");
-    \Drupal::service('path.alias_storage')->save("/app/contacts/organization/" . $entity->id() . '/edit', "/app/contacts/organization/company/" . $pathTitle . '/edit', "en");
-    \Drupal::service('path.alias_storage')->save("/app/contacts/organization/" . $entity->id() . '/delete', "/app/contacts/organization/company/" . $pathTitle . '/delete', "en");
+    $path_alias = PathAlias::create([
+      'path' => "/app/contacts/organization/" . $entity->id(),
+      'alias' => "/app/contacts/organization/company/" . $pathTitle,
+    ]);
+    $path_alias->save();
+
+    $path_alias = PathAlias::create([
+      'path' => "/app/contacts/organization/" . $entity->id() . "/edit",
+      'alias' => "/app/contacts/organization/company/" . $pathTitle . "/edit",
+    ]);
+    $path_alias->save();
+
+    $path_alias = PathAlias::create([
+      'path' => "/app/contacts/organization/" . $entity->id() . "/delete",
+      'alias' => "/app/contacts/organization/company/" . $pathTitle . "/delete",
+    ]);
+    $path_alias->save();
+
+    //\Drupal::service('path.alias_storage')->save("/app/contacts/organization/" . $entity->id(), "/app/contacts/organization/company/" . $pathTitle, "en");
+    //\Drupal::service('path.alias_storage')->save("/app/contacts/organization/" . $entity->id() . '/edit', "/app/contacts/organization/company/" . $pathTitle . '/edit', "en");
+    //\Drupal::service('path.alias_storage')->save("/app/contacts/organization/" . $entity->id() . '/delete', "/app/contacts/organization/company/" . $pathTitle . '/delete', "en");
   }
 }

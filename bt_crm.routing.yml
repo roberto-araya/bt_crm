@@ -1,40 +1,3 @@
-# Route for adding content for an entity.
-bt_activities.add_page:
-  path: '/app/activities/schedule/{contact_id}/{opportunity_id}'
-  defaults:
-    _title_callback: '\Drupal\bt_crm\Controller\ActivitiesController::addPageTitle'
-    _controller: '\Drupal\bt_crm\Controller\ActivitiesController::addPage'
-    opportunity_id: '0'
-    contact_id: '0'
-  options:
-    _admin_route: TRUE
-  requirements:
-    _permission: 'create bt_activities entities'
-
-bt_activities.add:
-  path: '/app/{eck_entity_type}/schedule/activity/{eck_entity_bundle}'
-  defaults:
-    _controller: '\Drupal\eck\Controller\EckContentController::add'
-  requirements:
-    _eck_entity_create_access: '{eck_entity_type}'
-  options:
-    _admin_route: TRUE
-    parameters:
-      eck_entity_type:
-        type: entity:eck_entity_type
-
-bt_opportunities.add:
-  path: '/app/activities/{eck_entity_type}/create/{eck_entity_bundle}'
-  defaults:
-    _controller: '\Drupal\eck\Controller\EckContentController::add'
-  requirements:
-    _eck_entity_create_access: '{eck_entity_type}'
-  options:
-    _admin_route: TRUE
-    parameters:
-      eck_entity_type:
-        type: entity:eck_entity_type
-
 entity.redhen_contact.convert_to_client:
   path: '/app/contacts/persons/{redhen_contact}/convert-to-client'
   defaults:
@@ -46,3 +9,41 @@ entity.redhen_contact.convert_to_client:
     parameters:
       redhen_contact:
         type: entity:redhen_contact
+
+bt_crm.contacts:
+  path: '/app/contacts'
+  defaults:
+    _controller: '\Drupal\bt_core\Controller\AppController::content'
+    _title: 'Contacts'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _role: 'bt_manage_crm+bt_use_crm'
+
+bt_crm.persons:
+  path: '/app/contacts/persons'
+  defaults:
+    _controller: '\Drupal\bt_core\Controller\AppController::content'
+    _title: 'Persons'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _role: 'bt_manage_crm+bt_use_crm'
+
+bt_crm.organizations:
+  path: '/app/contacts/organizations'
+  defaults:
+    _controller: '\Drupal\bt_core\Controller\AppController::content'
+    _title: 'Organizations'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _role: 'bt_manage_crm+bt_use_crm'
+
+entity.bt_opportunity.settings:
+  path: 'admin/structure/bt-opportunity'
+  defaults:
+    _form: '\Drupal\bt_crm\Form\BtOpportunitySettingsForm'
+    _title: 'Opportunity'
+  requirements:
+    _permission: 'administer opportunity'

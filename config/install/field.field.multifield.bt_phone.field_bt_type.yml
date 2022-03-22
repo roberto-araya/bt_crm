@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - bt_core.multifield_type.bt_phone
+    - field.storage.multifield.field_bt_type
+  module:
+    - options
+id: multifield.bt_phone.field_bt_type
+field_name: field_bt_type
+entity_type: multifield
+bundle: bt_phone
+label: Type
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

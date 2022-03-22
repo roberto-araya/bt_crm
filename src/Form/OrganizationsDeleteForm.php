@@ -5,6 +5,8 @@ namespace Drupal\bt_crm\Form;
 use Drupal\Core\Entity\ContentEntityDeleteForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Drupal\Core\Messenger\MessengerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a form for deleting Contact entities.
@@ -12,6 +14,22 @@ use Drupal\Core\Url;
  * @ingroup redhen_contact
  */
 class OrganizationsDeleteForm extends ContentEntityDeleteForm {
+
+  /**
+   * The Messenger service.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    $instance = parent::create($container);
+    $instance->messenger = $container->get('messenger');
+    return $instance;
+  }
 
   /**
    * {@inheritdoc}
@@ -29,10 +47,9 @@ class OrganizationsDeleteForm extends ContentEntityDeleteForm {
     }
     else {
       $entity->delete();
-      $form_state->setRedirectUrl(new Url('page_manager.page_view_app_organizations_app_organizations-panels_variant-0'));
+      $form_state->setRedirectUrl(new Url('bt_crm.organizations'));
     }
-
-    drupal_set_message($this->getDeletionMessage());
+    $this->messenger->addMessage($this->getDeletionMessage());
     $this->logDeletionMessage();
   }
 

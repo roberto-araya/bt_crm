@@ -1,14 +1,14 @@
 bt_contacts_menu:
   title: 'Contacts'
   description: 'Contacts dashboard'
-  route_name: page_manager.page_view_app_contacts_app_contacts-panels_variant-0
+  route_name: bt_crm.contacts
   weight: 2
   menu_name: bt-menu-app
 
 bt_contacts_persons_menu:
   title: 'Persons'
   description: 'List of all personal contacts.'
-  route_name: page_manager.page_view_app_persons_app_persons-panels_variant-0
+  route_name: bt_crm.persons
   parent: bt_contacts_menu
   weight: 0
   menu_name: bt-menu-app
@@ -24,7 +24,7 @@ bt_contacts_persons_add_menu:
 bt_contacts_organizations_menu:
   title: 'Organizations'
   description: 'List of all organizational contacts'
-  route_name: page_manager.page_view_app_organizations_app_organizations-panels_variant-0
+  route_name: bt_crm.organizations
   parent: bt_contacts_menu
   weight: 1
   menu_name: bt-menu-app
@@ -37,36 +37,29 @@ bt_contacts_organizations_add_menu:
   weight: 0
   menu_name: bt-menu-app
 
-bt_activities_menu:
-  title: 'Activities'
-  description: 'List of all activities.'
-  route_name: page_manager.page_view_app_activities_app_activities-panels_variant-0
-  weight: 3
-  menu_name: bt-menu-app
-
-bt_activities_add_menu:
-  title: 'Schedule activity'
-  description: 'Schedule activity'
-  route_name: bt_activities.add_page
-  parent: bt_activities_menu
-  weight: 0
-  menu_name: bt-menu-app
-
-bt_activities_opportunities_menu:
+bt_contacts_opportunities_menu:
   title: 'Opportunities'
-  description: 'List of all detected opportunities.'
-  route_name: page_manager.page_view_app_activities_opportunities_app_activities_opportunities-panels_variant-0
-  parent: bt_activities_menu
-  weight: 1
+  description: 'List of all contacts opportunities'
+  route_name: entity.bt_opportunity.collection
+  parent: bt_contacts_menu
+  weight: 2
   menu_name: bt-menu-app
 
-bt_activities_opportunities_add_menu:
+bt_contacts_opportunities_add_menu:
   title: 'Add opportunity'
   description: 'Add opportunity'
-  route_name: 'bt_opportunities.add'
-  route_parameters:
-    eck_entity_type: bt_opportunities
-    eck_entity_bundle: bt_opportunity
-  parent: bt_activities_opportunities_menu
+  route_name: entity.bt_opportunity.add_form
+  parent: bt_contacts_opportunities_menu
   weight: 0
   menu_name: bt-menu-app
+
+entity.bt_opportunity.settings:
+  title: Opportunity
+  description: Configure an Opportunity entity type
+  route_name:  entity.bt_opportunity.settings
+  parent: system.admin_structure
+entity.bt_opportunity.collection:
+  title: Opportunities
+  description: List of opportunities
+  route_name: entity.bt_opportunity.collection
+  parent: system.admin_content

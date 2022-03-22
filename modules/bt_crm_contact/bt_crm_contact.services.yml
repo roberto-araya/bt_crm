@@ -1,6 +1,6 @@
-services:
-  bt_crm_contact_config.overrider:
-    class: Drupal\bt_crm_contact\Config\ConfigCrmContactOverride
-    arguments: ['@config.factory',]
-    tags:
-      - {name: config.factory.override, priority: 25}
+#services:
+#  bt_crm_contact_config.overrider:
+#    class: Drupal\bt_crm_contact\Config\ConfigCrmContactOverride
+#    arguments: ['@config.factory',]
+#    tags:
+#      - {name: config.factory.override, priority: 25}

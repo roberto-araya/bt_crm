@@ -55,36 +55,6 @@ class RouteSubscriber extends RouteSubscriberBase {
       $route->setPath('/app/contacts/organization/{redhen_org}/delete');
       $route->setOption('_admin_route', TRUE);
     }
-
-    // Alter bt_activities routes.
-    if ($route = $collection->get('entity.bt_activities.canonical')) {
-      $route->setPath('/app/activity/{bt_activities}');
-      $route->setOption('_admin_route', TRUE);
-    }
-    if ($route = $collection->get('entity.bt_activities.edit_form')) {
-      $route->setPath('/app/activity/{bt_activities}/edit');
-      $route->setDefault('_title', 'Edit Activity');
-      $route->setOption('_admin_route', TRUE);
-    }
-    if ($route = $collection->get('entity.bt_activities.delete_form')) {
-      $route->setPath('/app/activity/{bt_activities}/delete');
-      $route->setOption('_admin_route', TRUE);
-    }
-
-    // Alter bt_opportunities routes.
-    if ($route = $collection->get('entity.bt_opportunities.canonical')) {
-      $route->setPath('/app/activities/opportunity/{bt_opportunities}');
-      $route->setOption('_admin_route', TRUE);
-    }
-    if ($route = $collection->get('entity.bt_opportunities.edit_form')) {
-      $route->setPath('/app/activities/opportunity/{bt_opportunities}/edit');
-      $route->setDefault('_title', 'Edit Opportunity');
-      $route->setOption('_admin_route', TRUE);
-    }
-    if ($route = $collection->get('entity.bt_opportunities.delete_form')) {
-      $route->setPath('/app/activities/opportunity/{bt_opportunities}/delete');
-      $route->setOption('_admin_route', TRUE);
-    }
   }
 
 }

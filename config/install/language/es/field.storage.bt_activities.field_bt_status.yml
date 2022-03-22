@@ -1,8 +1,0 @@
-settings:
-  allowed_values:
-    -
-      value: pendiente
-      label: Pendiente
-    -
-      value: realizado
-      label: Realizado

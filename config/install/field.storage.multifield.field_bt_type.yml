@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - bt_core
+    - field_permissions
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: multifield.field_bt_type
+field_name: field_bt_type
+entity_type: multifield
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: mobile
+      label: Mobile
+    -
+      value: office
+      label: Office
+    -
+      value: workshop
+      label: Workshop
+    -
+      value: warehouse
+      label: Warehouse
+    -
+      value: personal
+      label: Personal
+    -
+      value: other
+      label: Other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

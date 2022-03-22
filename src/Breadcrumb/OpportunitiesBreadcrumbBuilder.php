@@ -28,11 +28,11 @@ class OpportunitiesBreadcrumbBuilder implements BreadcrumbBuilderInterface {
    * @var array
    */
   private $routes = [
-    'page_manager.page_view_app_activities_opportunities_app_activities_opportunities-panels_variant-0',
-    'entity.bt_opportunities.canonical',
-    'entity.bt_opportunities.edit_form',
-    'entity.bt_opportunities.delete_form',
-    'bt_opportunities.add',
+    'entity.bt_opportunity.collection',
+    'entity.bt_opportunity.canonical',
+    'entity.bt_opportunity.edit_form',
+    'entity.bt_opportunity.delete_form',
+    'entity.bt_opportunity.add_form',
   ];
 
   /**
@@ -63,12 +63,14 @@ class OpportunitiesBreadcrumbBuilder implements BreadcrumbBuilderInterface {
     $breadcrumb = new Breadcrumb();
     $breadcrumb->addCacheContexts(["url"]);
 
-    if ($route == 'page_manager.page_view_app_activities_opportunities_app_activities_opportunities-panels_variant-0') {
-      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'page_manager.page_view_app_app-panels_variant-0'));
+    if ($route == 'entity.bt_opportunity.collection') {
+      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'bt_core.app'));
+      $breadcrumb->addLink(Link::createFromRoute('Contacts', 'bt_crm.contacts'));
     }
     else {
-      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'page_manager.page_view_app_app-panels_variant-0'));
-      $breadcrumb->addLink(Link::createFromRoute('Opportunities', 'page_manager.page_view_app_activities_opportunities_app_activities_opportunities-panels_variant-0'));
+      $breadcrumb->addLink(Link::createFromRoute($this->siteName, 'bt_core.app'));
+      $breadcrumb->addLink(Link::createFromRoute('Contacts', 'bt_crm.contacts'));
+      $breadcrumb->addLink(Link::createFromRoute('Opportunities', 'entity.bt_opportunity.collection'));
     }
 
     return $breadcrumb;

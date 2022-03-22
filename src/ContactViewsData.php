@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\bt_crm_contact;
+namespace Drupal\bt_crm;
 
 use Drupal\views\EntityViewsData;
 use Drupal\views\EntityViewsDataInterface;

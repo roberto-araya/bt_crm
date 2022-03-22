@@ -6,7 +6,6 @@ use Drupal\webform\Plugin\WebformHandler\EmailWebformHandler;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\redhen_contact\Entity\Contact;
 use Drupal\field_collection\Entity\FieldCollectionItem;
 use Drupal\Core\Form\FormStateInterface;
@@ -32,38 +31,11 @@ use Drupal\webform\WebformTokenManagerInterface;
 class EmailWithContactIdTracking extends EmailWebformHandler {
 
   /**
-   * EntityQuery for Redhen contacts.
-   *
-   * @var Drupal\Core\Entity\Query\QueryFactory
-   */
-  protected $entityQuery;
-
-  /**
    * Prospect Contact ID.
    *
    * @var idContacto
    */
   protected $idContacto;
-
-  /**
-   * {@inheritdoc}
-   */
-  public function __construct(
-    array $configuration,
-    $plugin_id,
-    $plugin_definition,
-    LoggerInterface $logger,
-    EntityTypeManagerInterface $entity_type_manager,
-    AccountInterface $current_user,
-    ConfigFactoryInterface $config_factory,
-    MailManagerInterface $mail_manager,
-    WebformTokenManagerInterface $token_manager,
-    WebformElementManagerInterface $element_manager,
-    QueryFactory $entityQuery
-  ) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $logger, $entity_type_manager, $current_user, $config_factory, $mail_manager, $token_manager, $element_manager);
-    $this->entityQuery = $entityQuery;
-  }
 
   /**
    * {@inheritdoc}
@@ -80,7 +52,6 @@ class EmailWithContactIdTracking extends EmailWebformHandler {
       $container->get('plugin.manager.mail'),
       $container->get('webform.token_manager'),
       $container->get('plugin.manager.webform.element'),
-      $container->get('entity.query')
     );
   }
 
@@ -88,7 +59,7 @@ class EmailWithContactIdTracking extends EmailWebformHandler {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
-    $query = $this->entityQuery->get('redhen_contact');
+    $query = $this->entityTypeManager->getStorage('redhen_contact')->getQuery();
 
     // We need to know if the person sending the form exist in the CRM.
     $query->condition('email', $webform_submission->getData('email'));

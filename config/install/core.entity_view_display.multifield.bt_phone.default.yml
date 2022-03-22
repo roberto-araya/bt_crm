@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - bt_core.multifield_type.bt_phone
+    - field.field.multifield.bt_phone.field_bt_phone
+    - field.field.multifield.bt_phone.field_bt_type
+  module:
+    - options
+    - telephone
+id: multifield.bt_phone.default
+targetEntityType: multifield
+bundle: bt_phone
+mode: default
+content:
+  field_bt_phone:
+    type: telephone_link
+    label: hidden
+    settings:
+      title: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_bt_type:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  description: true
+  status: true
+  uid: true

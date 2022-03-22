@@ -7,42 +7,42 @@
 
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Render\Element;
+use Drupal\path_alias\Entity\PathAlias;
 
 /**
  * Implements hook_theme().
  */
 function bt_crm_theme() {
-  $templates['activities_add_list'] = [
-    'variables' => [
-      'content' => NULL,
-      'entity_type' => NULL,
-      'entity_info' => NULL,
+  return [
+    'bt_opportunity' => [
+      'render element' => 'elements',
     ],
-    'file' => 'bt_activities.pages.inc',
   ];
-
-  return $templates;
 }
+
+/**
+ * Prepares variables for opportunity templates.
+ *
+ * Default template: bt-opportunity.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the opportunity information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_bt_opportunity(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
 
 /**
  * Implements hook_entity_type_alter().
  */
 function bt_crm_entity_type_alter(array &$entity_types) {
-  if (array_key_exists('bt_activities', $entity_types)) {
-    $entity_types['bt_activities']->setFormClass('delete', 'Drupal\bt_crm\Form\ActivitiesDeleteForm');
-  }
-  if (array_key_exists('bt_activities_type', $entity_types)) {
-    $entity_types['bt_activities_type']->setHandlerClass('access', 'Drupal\bt_crm\ActivitiesAccessControlHandler');
-  }
-
-  if (array_key_exists('bt_opportunities', $entity_types)) {
-    $entity_types['bt_opportunities']->setFormClass('delete', 'Drupal\bt_crm\Form\OpportunitiesDeleteForm');
-  }
-
-  if (array_key_exists('opportunities_type', $entity_types)) {
-    $entity_types['opportunities_type']->setHandlerClass('access', 'Drupal\bt_crm\OpportunitiesAccessControlHandler');
-  }
-
   if (array_key_exists('redhen_contact', $entity_types)) {
     $entity_types['redhen_contact']->setFormClass('delete', 'Drupal\bt_crm\Form\ContactsDeleteForm');
     $entity_types['redhen_contact']->setHandlerClass('views_data', 'Drupal\bt_crm\ContactViewsData');
@@ -62,122 +62,81 @@ function bt_crm_entity_type_alter(array &$entity_types) {
 /**
  * Implements hook_ENTITY_TYPE_insert().
  */
-function bt_crm_activities_insert(EntityInterface $entity) {
-  // Convert to lowercase, trim spaces,
-  // replace spaces with underscore and then truncate to 60 chars.
-  $pathTitle = substr(str_replace(" ", "-", trim(strtolower($entity->label()))), 0, 60);
-  switch ($entity->bundle()) {
-    case 'bt_schedule_email':
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id(), "/app/activity/email/" . $pathTitle, "en");
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id() . '/edit', "/app/activity/email/" . $pathTitle . '/edit', "en");
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id() . '/delete', "/app/activity/email/" . $pathTitle . '/delete', "en");
-      break;
-
-    case 'bt_schedule_phone_call':
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id(), "/app/activity/phone-call/" . $pathTitle, "en");
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id() . '/edit', "/app/activity/phone-call/" . $pathTitle . '/edit', "en");
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id() . '/delete', "/app/activity/phone-call/" . $pathTitle . '/delete', "en");
-      break;
-
-    case 'bt_schedule_meeting':
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id(), "/app/activity/meeting/" . $pathTitle, "en");
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id() . '/edit', "/app/activity/meeting/" . $pathTitle . '/edit', "en");
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id() . '/delete', "/app/activity/meeting/" . $pathTitle . '/delete', "en");
-      break;
-
-    case 'bt_schedule_visit':
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id(), "/app/activity/visit/" . $pathTitle, "en");
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id() . '/edit', "/app/activity/visit/" . $pathTitle . '/edit', "en");
-      \Drupal::service('path.alias_storage')->save("/app/activity/" . $entity->id() . '/delete', "/app/activity/visit/" . $pathTitle . '/delete', "en");
-      break;
-  }
-}
-
-/**
- * Implements hook_ENTITY_TYPE_insert().
- */
-function bt_crm_opportunities_insert(EntityInterface $entity) {
-  // Convert to lowercase, trim spaces,
-  // replace spaces with underscore and then truncate to 60 chars.
-  $pathTitle = substr(str_replace(" ", "-", trim(strtolower($entity->label()))), 0, 60);
-  switch ($entity->bundle()) {
-    case 'bt_opportunity':
-      \Drupal::service('path.alias_storage')->save("/app/opportunity/" . $entity->id(), "/app/activity/opportunity/" . $pathTitle, "en");
-      \Drupal::service('path.alias_storage')->save("/app/opportunity/" . $entity->id() . '/edit', "/app/activity/opportunity/" . $pathTitle . '/edit', "en");
-      \Drupal::service('path.alias_storage')->save("/app/opportunity/" . $entity->id() . '/delete', "/app/activity/opportunity/" . $pathTitle . '/delete', "en");
-      break;
-  }
-
-}
-
-/**
- * Implements hook_ENTITY_TYPE_insert().
- */
 function bt_crm_redhen_org_insert(EntityInterface $entity) {
   // Convert to lowercase, trim spaces,
   // replace spaces with underscore and then truncate to 60 chars.
   $pathTitle = substr(str_replace(" ", "-", trim(strtolower($entity->label()))), 0, 60);
-  switch ($entity->bundle()) {
-    case 'bt_supplier':
-      \Drupal::service('path.alias_storage')->save("/app/contacts/organization/" . $entity->id(), "/app/contacts/organization/supplier/" . $pathTitle, "en");
-      \Drupal::service('path.alias_storage')->save("/app/contacts/organization/" . $entity->id() . '/edit', "/app/contacts/organization/supplier/" . $pathTitle . '/edit', "en");
-      \Drupal::service('path.alias_storage')->save("/app/contacts/organization/" . $entity->id() . '/delete', "/app/contacts/organization/supplier/" . $pathTitle . '/delete', "en");
-      break;
+
+  $bundle = $entity->bundle();
+  if ($bundle == 'bt_supplier' || $bundle == 'bt_company') {
+    $bundle_name = [
+      'bt_supplier' => [
+        'en' => 'supplier',
+        'es' => 'proveedor',
+      ],
+      'bt_company' => [
+        'en' => 'company',
+        'es' => 'empresa',
+      ]
+    ];
+  
+    $en_aliases = [
+      "/app/contacts/organization/" . $entity->id() => "/app/contacts/organization/" . $bundle_name[$bundle]['en'] . "/" . $pathTitle,
+      "/app/contacts/organization/" . $entity->id() . "/edit" => "/app/contacts/organization/" . $bundle_name[$bundle]['en'] . "/" . $entity->id() . "/edit",
+      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contacts/organization/" . $bundle_name[$bundle]['en'] . "/" . $entity->id() . "/delete"
+    ];  
+  
+    foreach ($en_aliases as $path => $alias) {
+      $path_alias = PathAlias::create([
+        'path' => $path,
+        'alias' => $alias,
+        'langcode' => 'en'
+      ]);
+      $path_alias->save();
+    }
+  
+    $es_aliases = [
+      "/app/contacts/organization/" . $entity->id() => "/app/contactos/organizacion/" . $bundle_name[$bundle]['es'] . "/" . $pathTitle,
+      "/app/contacts/organization/" . $entity->id() . "/edit" => "/app/contactos/organizacion/" . $bundle_name[$bundle]['es'] . "/" . $entity->id() . "/editar",
+      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contactos/organizacion/" . $bundle_name[$bundle]['es'] . "/" . $entity->id() . "/eliminar"
+    ];
+    foreach ($es_aliases as $path => $alias) {
+      $path_alias = PathAlias::create([
+        'path' => $path,
+        'alias' => $alias,
+        'langcode' => 'es'
+      ]);
+      $path_alias->save();
+    }
   }
-}
-
-/**
- * Implements hook_entity_bundle_field_info().
- */
-function bt_crm_entity_bundle_field_info($entity_type, $bundle) {
-  if ($entity_type->id() == 'bt_activities') {
-    if (in_array($bundle, [
-      'bt_schedule_email',
-      'bt_schedule_phone_call',
-      'bt_schedule_meeting',
-      'bt_schedule_visit',
-    ])) {
-      $fields = array();
-      $fields['title'] = BaseFieldDefinition::create('string');
-      switch ($bundle) {
-        case 'bt_schedule_email':
-          $fields['title']->setLabel(t('Email subject'))
-            ->setDescription(t('El asunto del que tratará el correo que debe enviar.'));
-          break;
-
-        case 'bt_schedule_phone_call':
-          $fields['title']->setLabel(t('Phone call subject'))
-            ->setDescription(t('El asunto del que tratará la llamada que debe realizar.'));
-          break;
-
-        case 'bt_schedule_meeting':
-          $fields['title']->setLabel(t('Meeting subject'))
-            ->setDescription(t('El asunto de la reunión que agendará.'));
-          break;
-
-        case 'bt_schedule_visit':
-          $fields['title']->setLabel(t('Visit subject'))
-            ->setDescription(t('El asunto que motiva la visita que se realizará.'));
-          break;
-      }
-      $fields['title']->setRequired(TRUE)
-        ->setTranslatable(TRUE)
-        ->setRevisionable(TRUE)
-        ->setDefaultValue('')
-        ->setSetting('max_length', 255)
-        ->setDisplayOptions('form', [
-          'type' => 'string_textfield',
-          'weight' => -5,
-        ])
-        ->setDisplayConfigurable('form', TRUE)
-        ->setDisplayOptions('view', [
-          'label' => 'hidden',
-          'type' => 'string',
-          'weight' => -5,
-        ])
-        ->setDisplayConfigurable('view', TRUE);
-
-      return $fields;
+  else {
+    $en_aliases = [
+      "/app/contacts/organization/" . $entity->id() => "/app/contacts/organization/" . $bundle . "/" . $pathTitle,
+      "/app/contacts/organization/" . $entity->id() . "/edit" => "/app/contacts/organization/" . $bundle . "/" . $entity->id() . "/edit",
+      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contacts/organization/" . $bundle . "/" . $entity->id() . "/delete"
+    ];  
+  
+    foreach ($en_aliases as $path => $alias) {
+      $path_alias = PathAlias::create([
+        'path' => $path,
+        'alias' => $alias,
+        'langcode' => 'en'
+      ]);
+      $path_alias->save();
+    }
+  
+    $es_aliases = [
+      "/app/contacts/organization/" . $entity->id() => "/app/contactos/organizacion/" . $bundle . "/" . $pathTitle,
+      "/app/contacts/organization/" . $entity->id() . "/edit" => "/app/contactos/organizacion/" . $bundle . "/" . $entity->id() . "/editar",
+      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contactos/organizacion/" . $bundle . "/" . $entity->id() . "/eliminar"
+    ];
+    foreach ($es_aliases as $path => $alias) {
+      $path_alias = PathAlias::create([
+        'path' => $path,
+        'alias' => $alias,
+        'langcode' => 'es'
+      ]);
+      $path_alias->save();
     }
   }
 }

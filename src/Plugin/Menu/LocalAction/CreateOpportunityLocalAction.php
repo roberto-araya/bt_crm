@@ -29,7 +29,7 @@ class CreateOpportunityLocalAction extends LocalActionDefault {
   private $request;
 
   /**
-   * Constructs a "Create solicitude" object.
+   * Constructs a "Create opportunity" object.
    *
    * @param array $configuration
    *   A configuration array containing information about the plugin instance.
@@ -74,7 +74,7 @@ class CreateOpportunityLocalAction extends LocalActionDefault {
     $route = $request->attributes->get('_route');
 
     switch ($route) {
-      case 'page_manager.page_view_app_activities_opportunities_app_activities_opportunities':
+      case 'entity.bt_opportunity.add_form':
         break;
 
       case 'entity.redhen_contact.canonical':
@@ -82,7 +82,7 @@ class CreateOpportunityLocalAction extends LocalActionDefault {
         // Get label.
         $label = $entityManager->getStorage('redhen_contact')->load($eid)->label();
         // Add the prepopulate options.
-        $options['query']['edit[field_bt_contact]'] = $label . ' (' . $eid . ')';
+        $options['query']['edit[field_bt_contact][widget][0][target_id]'] = $label . ' (' . $eid . ')';
         break;
 
       case 'entity.redhen_org.canonical':
@@ -90,7 +90,7 @@ class CreateOpportunityLocalAction extends LocalActionDefault {
         // Get label.
         $label = $entityManager->getStorage('redhen_org')->load($eid)->label();
         // Add the prepopulate options.
-        $options['query']['edit[field_bt_organization]'] = $label . ' (' . $eid . ')';
+        $options['query']['edit[field_bt_organization][widget][0][target_id]'] = $label . ' (' . $eid . ')';
         break;
     }
 
