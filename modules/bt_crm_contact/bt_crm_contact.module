@@ -61,8 +61,5 @@ function bt_crm_contact_redhen_contact_insert(EntityInterface $entity) {
       'alias' => "/app/contacts/persons/contact/" . $pathTitle . "/delete",
     ]);
     $path_alias->save();
-    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id(), "/app/contacts/persons/contact/" . $pathTitle, "en");
-    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/edit', "/app/contacts/persons/contact/" . $pathTitle . '/edit', "en");
-    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/delete', "/app/contacts/persons/contact/" . $pathTitle . '/delete', "en");
   }
 }

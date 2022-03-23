@@ -3,7 +3,7 @@
   "type": "drupal-module",
   "description": "This module creates a personas-based CRM environment for managing contacts and activities.",
   "homepage": "https://www.drupal.org/project/bt_crm",
-  "license": "GPL-2.0+",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Roberto Araya",
@@ -14,9 +14,12 @@
     "issues": "https://www.drupal.org/project/issues/bt_crm",
     "source": "http://git.drupal.org/project/bt_crm.git"
   },
+  "minimum-stability": "dev",
   "require": {
-    "drupal/bt_core": "1.x-dev",
-    "drupal/redhen": "1.x-dev",
-    "drupal/eck": "1.x-dev"
+    "drupal/bt_core": "2.x",
+    "drupal/redhen": "1.x",
+    "drupal/field_states_ui": "^2.0",
+    "drupal/entity": "^1.0",
+    "drupal/rut": "^1.0" 
   }
 }

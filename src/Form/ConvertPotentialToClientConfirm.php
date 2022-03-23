@@ -9,7 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\Entity\User;
 
 /**
- * Class ConvertPotentialToClientConfirm.
+ * Converts potential clients to clients.
  *
  * @package Drupal\bt_crm\Form
  */
@@ -43,56 +43,52 @@ class ConvertPotentialToClientConfirm extends FormBase {
     $this->contact = $redhen_contact;
     $email = $this->contact->getEmail();
     if (empty($email)) {
-      $title = t('This contact cannot be converted');
-      $description = t('The contact must have an email. Edit the contact, add an email and try to convert again.');
-      $actions = array(
-        'cancel' => array(
+      $title = $this->t('This contact cannot be converted');
+      $description = $this->t('The contact must have an email. Edit the contact, add an email and try to convert again.');
+      $actions = [
+        'cancel' => [
           '#type' => 'link',
-          '#title' => t('Accept'),
-          '#attributes' => array(
-            'class' => array('button'),
-          ),
+          '#title' => $this->t('Accept'),
+          '#attributes' => [
+            'class' => ['button'],
+          ],
           '#url' => Url::fromRoute('bt_crm.persons'),
-          '#cache' => array(
-            'contexts' => array(
-              'url.query_args:destination',
-            ),
-          ),
-        ),
-      );
+          '#cache' => [
+            'contexts' => ['url.query_args:destination'],
+          ],
+        ],
+      ];
     }
     else {
-      $title = t('Are you sure you want to convert the contact %type in client?', array('%type' => $this->contact->label()));
-      $description = t('This action will convert the current contact of type potential client to a contact of type client. All activities and oportunities linked to the contact will remains linked to new contact.');
-      $actions = array(
-        'submit' => array(
+      $title = $this->t('Are you sure you want to convert the contact %type in client?', ['%type' => $this->contact->label()]);
+      $description = $this->t('This action will convert the current contact of type potential client to a contact of type client. All activities and oportunities linked to the contact will remains linked to new contact.');
+      $actions = [
+        'submit' => [
           '#type' => 'submit',
-          '#value' => t('Convert'),
+          '#value' => $this->t('Convert'),
           '#button_type' => 'primary',
-          '#submit' => array(
-            array($this, 'submitForm'),
-          ),
-        ),
-        'cancel' => array(
+          '#submit' => [
+            [$this, 'submitForm'],
+          ],
+        ],
+        'cancel' => [
           '#type' => 'link',
-          '#title' => t('Cancel'),
-          '#attributes' => array(
-            'class' => array('button'),
-          ),
+          '#title' => $this->t('Cancel'),
+          '#attributes' => [
+            'class' => ['button'],
+          ],
           '#url' => Url::fromRoute('bt_crm.persons'),
-          '#cache' => array(
-            'contexts' => array(
-              'url.query_args:destination',
-            ),
-          ),
-        ),
-      );
+          '#cache' => [
+            'contexts' => ['url.query_args:destination'],
+          ],
+        ],
+      ];
     }
     $form['#title'] = $title;
     $form['#attributes']['class'][] = 'confirmation';
-    $form['description'] = array('#markup' => $description);
+    $form['description'] = ['#markup' => $description];
 
-    $form[$this->getFormName()] = array('#type' => 'hidden', '#value' => 1);
+    $form[$this->getFormName()] = ['#type' => 'hidden', '#value' => 1];
     $form['#theme'] = 'confirm_form';
 
     $form['actions'] = $actions;
@@ -132,7 +128,7 @@ class ConvertPotentialToClientConfirm extends FormBase {
     $user->activate();
     $user->save();
 
-    $this->contact->set('uid', array($user->id()));
+    $this->contact->set('uid', [$user->id()]);
     $this->contact->save();
   }
 

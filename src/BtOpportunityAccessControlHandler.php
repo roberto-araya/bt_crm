@@ -22,10 +22,18 @@ class BtOpportunityAccessControlHandler extends EntityAccessControlHandler {
         return AccessResult::allowedIfHasPermission($account, 'view opportunity');
 
       case 'update':
-        return AccessResult::allowedIfHasPermissions($account, ['edit opportunity', 'administer opportunity'], 'OR');
+        return AccessResult::allowedIfHasPermissions(
+          $account,
+          ['edit opportunity', 'administer opportunity'],
+          'OR'
+        );
 
       case 'delete':
-        return AccessResult::allowedIfHasPermissions($account, ['delete opportunity', 'administer opportunity'], 'OR');
+        return AccessResult::allowedIfHasPermissions(
+          $account,
+          ['delete opportunity', 'administer opportunity'],
+          'OR'
+        );
 
       default:
         // No opinion.
@@ -38,7 +46,11 @@ class BtOpportunityAccessControlHandler extends EntityAccessControlHandler {
    * {@inheritdoc}
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
-    return AccessResult::allowedIfHasPermissions($account, ['create opportunity', 'administer opportunity'], 'OR');
+    return AccessResult::allowedIfHasPermissions(
+      $account,
+      ['create opportunity', 'administer opportunity'],
+      'OR'
+    );
   }
 
 }

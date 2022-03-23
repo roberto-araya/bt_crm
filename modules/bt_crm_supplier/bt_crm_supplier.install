@@ -15,7 +15,7 @@ function bt_crm_supplier_install() {
   $path_alias = PathAlias::create([
     'path' => '/app/contacts/add/organization/bt_supplier',
     'alias' => '/app/contacts/add/organization/supplier',
+    'langcode' => 'en',
   ]);
   $path_alias->save();
-  //\Drupal::service('path.alias_storage')->save('/app/contacts/add/organization/bt_supplier', '/app/contacts/add/organization/supplier', 'en');
 }

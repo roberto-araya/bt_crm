@@ -5,13 +5,6 @@ namespace Drupal\bt_crm\Plugin\WebformHandler;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\redhen_contact\Entity\Contact;
-use Drupal\field_collection\Entity\FieldCollectionItem;
-use Drupal\webform\WebformSubmissionInterface;
-use Drupal\webform\WebformSubmissionConditionsValidatorInterface;
 
 /**
  * Form submission handler.
@@ -61,19 +54,6 @@ class CreateRedhenContact extends WebformHandlerBase {
       $prospect->setEmail($data['email']);
       $prospect->set('first_name', $data['name']);
       $prospect->save();
-
-      // Set phone field collection.
-      /*if (!empty($data['phone'])) {
-        $fc = FieldCollectionItem::create(['field_name' => 'field_bt_phones']);
-        $fc->field_bt_phone_type->setValue('movil');
-        $fc->field_bt_phone->setValue($data['phone']);
-        $fc->setHostEntity($prospect);
-        $fc->save();
-        // Link field collection with prospect client object
-        // and save prospect in the CRM.
-        $prospect->field_bt_phones[] = ['field_collection_item' => $fc];
-        $prospect->save();
-      }*/
     }
   }
 

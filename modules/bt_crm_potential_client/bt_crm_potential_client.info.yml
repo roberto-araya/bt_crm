@@ -4,4 +4,4 @@ description: Btester CRM Potential Client
 core_version_requirement: ^9.2
 package: Btester
 dependencies:
-  - bt_crm
+  - bt_crm:bt_crm

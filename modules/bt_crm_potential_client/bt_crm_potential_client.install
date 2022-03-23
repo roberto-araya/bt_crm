@@ -4,6 +4,7 @@
  * @file
  * Install, update and uninstall functions for bt_crm_potential_client.
  */
+
 use Drupal\path_alias\Entity\PathAlias;
 
 /**
@@ -14,7 +15,7 @@ function bt_crm_potential_client_install() {
   $path_alias = PathAlias::create([
     'path' => '/app/contacts/add/person/bt_potential_client',
     'alias' => '/app/contacts/add/person/potential-client',
+    'langcode' => 'en',
   ]);
   $path_alias->save();
-  //\Drupal::service('path.alias_storage')->save('/app/contacts/add/person/bt_potential_client', '/app/contacts/add/person/potential-client', 'en');
 }

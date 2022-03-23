@@ -9,6 +9,7 @@ use Drupal\views\EntityViewsDataInterface;
  * Provides Views data for Connection entities.
  */
 class ContactViewsData extends EntityViewsData implements EntityViewsDataInterface {
+
   /**
    * {@inheritdoc}
    */
@@ -16,4 +17,5 @@ class ContactViewsData extends EntityViewsData implements EntityViewsDataInterfa
     $data = parent::getViewsData();
     return $data;
   }
+
 }

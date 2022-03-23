@@ -5,7 +5,6 @@
  * Module file for bt_crm.
  */
 
-use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Render\Element;
 use Drupal\path_alias\Entity\PathAlias;
@@ -28,8 +27,8 @@ function bt_crm_theme() {
  *
  * @param array $variables
  *   An associative array containing:
- *   - elements: An associative array containing the opportunity information and any
- *     fields attached to the entity.
+ *   - elements: An associative array containing the opportunity
+ *     information and any fields attached to the entity.
  *   - attributes: HTML attributes for the containing element.
  */
 function template_preprocess_bt_opportunity(array &$variables) {
@@ -37,7 +36,6 @@ function template_preprocess_bt_opportunity(array &$variables) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
 }
-
 
 /**
  * Implements hook_entity_type_alter().
@@ -77,34 +75,34 @@ function bt_crm_redhen_org_insert(EntityInterface $entity) {
       'bt_company' => [
         'en' => 'company',
         'es' => 'empresa',
-      ]
+      ],
     ];
-  
+
     $en_aliases = [
       "/app/contacts/organization/" . $entity->id() => "/app/contacts/organization/" . $bundle_name[$bundle]['en'] . "/" . $pathTitle,
       "/app/contacts/organization/" . $entity->id() . "/edit" => "/app/contacts/organization/" . $bundle_name[$bundle]['en'] . "/" . $entity->id() . "/edit",
-      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contacts/organization/" . $bundle_name[$bundle]['en'] . "/" . $entity->id() . "/delete"
-    ];  
-  
+      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contacts/organization/" . $bundle_name[$bundle]['en'] . "/" . $entity->id() . "/delete",
+    ];
+
     foreach ($en_aliases as $path => $alias) {
       $path_alias = PathAlias::create([
         'path' => $path,
         'alias' => $alias,
-        'langcode' => 'en'
+        'langcode' => 'en',
       ]);
       $path_alias->save();
     }
-  
+
     $es_aliases = [
       "/app/contacts/organization/" . $entity->id() => "/app/contactos/organizacion/" . $bundle_name[$bundle]['es'] . "/" . $pathTitle,
       "/app/contacts/organization/" . $entity->id() . "/edit" => "/app/contactos/organizacion/" . $bundle_name[$bundle]['es'] . "/" . $entity->id() . "/editar",
-      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contactos/organizacion/" . $bundle_name[$bundle]['es'] . "/" . $entity->id() . "/eliminar"
+      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contactos/organizacion/" . $bundle_name[$bundle]['es'] . "/" . $entity->id() . "/eliminar",
     ];
     foreach ($es_aliases as $path => $alias) {
       $path_alias = PathAlias::create([
         'path' => $path,
         'alias' => $alias,
-        'langcode' => 'es'
+        'langcode' => 'es',
       ]);
       $path_alias->save();
     }
@@ -113,28 +111,28 @@ function bt_crm_redhen_org_insert(EntityInterface $entity) {
     $en_aliases = [
       "/app/contacts/organization/" . $entity->id() => "/app/contacts/organization/" . $bundle . "/" . $pathTitle,
       "/app/contacts/organization/" . $entity->id() . "/edit" => "/app/contacts/organization/" . $bundle . "/" . $entity->id() . "/edit",
-      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contacts/organization/" . $bundle . "/" . $entity->id() . "/delete"
-    ];  
-  
+      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contacts/organization/" . $bundle . "/" . $entity->id() . "/delete",
+    ];
+
     foreach ($en_aliases as $path => $alias) {
       $path_alias = PathAlias::create([
         'path' => $path,
         'alias' => $alias,
-        'langcode' => 'en'
+        'langcode' => 'en',
       ]);
       $path_alias->save();
     }
-  
+
     $es_aliases = [
       "/app/contacts/organization/" . $entity->id() => "/app/contactos/organizacion/" . $bundle . "/" . $pathTitle,
       "/app/contacts/organization/" . $entity->id() . "/edit" => "/app/contactos/organizacion/" . $bundle . "/" . $entity->id() . "/editar",
-      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contactos/organizacion/" . $bundle . "/" . $entity->id() . "/eliminar"
+      "/app/contacts/organization/" . $entity->id() . "/delete" => "/app/contactos/organizacion/" . $bundle . "/" . $entity->id() . "/eliminar",
     ];
     foreach ($es_aliases as $path => $alias) {
       $path_alias = PathAlias::create([
         'path' => $path,
         'alias' => $alias,
-        'langcode' => 'es'
+        'langcode' => 'es',
       ]);
       $path_alias->save();
     }

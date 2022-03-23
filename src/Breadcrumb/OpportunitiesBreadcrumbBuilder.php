@@ -9,7 +9,7 @@ use Drupal\Core\Link;
 use Drupal\Core\Config\ConfigFactory;
 
 /**
- * Class OpportunitiesBreadcrumbBuilder.
+ * Opportunities breadcrumbs.
  *
  * @package Drupal\bt_crm\Breadcrumb
  */

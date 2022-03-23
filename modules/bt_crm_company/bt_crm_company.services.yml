@@ -1,6 +1,0 @@
-#services:
-#  bt_crm_company_config.overrider:
-#    class: Drupal\bt_crm_company\Config\ConfigCrmCompanyOverride
-#    arguments: ['@config.factory',]
-#    tags:
-#      - {name: config.factory.override, priority: 25}

@@ -17,5 +17,4 @@ function bt_crm_company_install() {
     'alias' => '/app/contacts/add/organization/company',
   ]);
   $path_alias->save();
-  //\Drupal::service('path.alias_storage')->save('/app/contacts/add/organization/bt_company', '/app/contacts/add/organization/company', 'en');
 }

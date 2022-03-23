@@ -4,17 +4,10 @@ namespace Drupal\bt_crm\Plugin\WebformHandler;
 
 use Drupal\webform\Plugin\WebformHandler\EmailWebformHandler;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Psr\Log\LoggerInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\redhen_contact\Entity\Contact;
 use Drupal\field_collection\Entity\FieldCollectionItem;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\webform\WebformSubmissionInterface;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Mail\MailManagerInterface;
-use Drupal\webform\WebformElementManagerInterface;
-use Drupal\webform\WebformTokenManagerInterface;
 
 /**
  * Emails a webform submission.

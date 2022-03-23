@@ -51,7 +51,7 @@ function bt_crm_client_redhen_contact_insert(EntityInterface $entity) {
     $path_alias->save();
 
     $path_alias = PathAlias::create([
-      'path' => "/app/contacts/persons/" . $entity->id()  . "/edit",
+      'path' => "/app/contacts/persons/" . $entity->id() . "/edit",
       'alias' => "/app/contacts/persons/client/" . $pathTitle . "/edit",
     ]);
     $path_alias->save();
@@ -61,9 +61,5 @@ function bt_crm_client_redhen_contact_insert(EntityInterface $entity) {
       'alias' => "/app/contacts/persons/client/" . $pathTitle . "/delete",
     ]);
     $path_alias->save();
-
-    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id(), "/app/contacts/persons/client/" . $pathTitle, "en");
-    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/edit', "/app/contacts/persons/client/" . $pathTitle . '/edit', "en");
-    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/delete', "/app/contacts/persons/client/" . $pathTitle . '/delete', "en");
   }
 }

@@ -17,5 +17,4 @@ function bt_crm_client_install() {
     'alias' => '/app/contacts/add/person/client',
   ]);
   $path_alias->save();
-  //\Drupal::service('path.alias_storage')->save('/app/contacts/add/person/bt_client', '/app/contacts/add/person/client', 'en');
 }

@@ -9,7 +9,7 @@ use Drupal\Core\Link;
 use Drupal\Core\Config\ConfigFactory;
 
 /**
- * Class ContactsBreadcrumbBuilder.
+ * Contacts breadcrumbs.
  *
  * @package Drupal\bt_crm\Breadcrumb
  */
@@ -27,7 +27,7 @@ class ContactsBreadcrumbBuilder implements BreadcrumbBuilderInterface {
    *
    * @var array
    */
-  private $routes = array(
+  private $routes = [
     'bt_crm.contacts',
     'bt_crm.persons',
     'entity.redhen_contact.canonical',
@@ -41,7 +41,7 @@ class ContactsBreadcrumbBuilder implements BreadcrumbBuilderInterface {
     'entity.redhen_org.add_page',
     'entity.redhen_org.edit_form',
     'entity.redhen_org.delete_form',
-  );
+  ];
 
   /**
    * {@inheritdoc}

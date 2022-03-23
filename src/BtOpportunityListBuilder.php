@@ -91,7 +91,7 @@ class BtOpportunityListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\bt_crm\BtOpportunityInterface */
+    /** @var \Drupal\bt_crm\BtOpportunityInterface $entity */
     $row['id'] = $entity->id();
     $row['title'] = $entity->toLink();
     $row['status'] = $entity->isEnabled() ? $this->t('Enabled') : $this->t('Disabled');

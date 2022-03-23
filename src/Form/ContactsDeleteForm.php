@@ -5,7 +5,6 @@ namespace Drupal\bt_crm\Form;
 use Drupal\Core\Entity\ContentEntityDeleteForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
-use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -65,7 +64,7 @@ class ContactsDeleteForm extends ContentEntityDeleteForm {
    * {@inheritdoc}
    */
   public function getQuestion() {
-    return $this->t('¿Are you sure you want to eliminate the contact %title?', array('%title' => $this->entity->label()));
+    return $this->t('¿Are you sure you want to eliminate the contact %title?', ['%title' => $this->entity->label()]);
   }
 
 }

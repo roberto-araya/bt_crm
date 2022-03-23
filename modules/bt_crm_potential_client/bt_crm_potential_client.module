@@ -47,23 +47,22 @@ function bt_crm_potential_client_redhen_contact_insert(EntityInterface $entity) 
     $path_alias = PathAlias::create([
       'path' => "/app/contacts/persons/" . $entity->id(),
       'alias' => "/app/contacts/persons/potential-client/" . $pathTitle,
+      'langcode' => 'en',
     ]);
     $path_alias->save();
 
     $path_alias = PathAlias::create([
       'path' => "/app/contacts/persons/" . $entity->id() . "/edit",
       'alias' => "/app/contacts/persons/potential-client/" . $pathTitle . "/edit",
+      'langcode' => 'en',
     ]);
     $path_alias->save();
 
     $path_alias = PathAlias::create([
       'path' => "/app/contacts/persons/" . $entity->id() . "/delete",
       'alias' => "/app/contacts/persons/potential-client/" . $pathTitle . "/delete",
+      'langcode' => 'en',
     ]);
     $path_alias->save();
-
-    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id(), "/app/contacts/persons/potential-client/" . $pathTitle, "en");
-    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/edit', "/app/contacts/persons/potential-client/" . $pathTitle . '/edit', "en");
-    //\Drupal::service('path.alias_storage')->save("/app/contacts/persons/" . $entity->id() . '/delete', "/app/contacts/persons/potential-client/" . $pathTitle . '/delete', "en");
   }
 }

@@ -1,8 +1,7 @@
 name: Btester CRM
 type: module
 description: 'Btester CRM'
-package: Custom
-core_version_requirement: ^8.8 || ^9
+core_version_requirement: ^9.2
 dependencies:
   - drupal:text
   - drupal:datetime
@@ -20,4 +19,5 @@ dependencies:
   - redhen:redhen_org
   - rut:rut
   - rut:rut_field
+  - entity:entity
 package: Btester

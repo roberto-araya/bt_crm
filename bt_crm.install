@@ -5,8 +5,6 @@
  * Install, update and uninstall functions for bt_crm.
  */
 
-use Drupal\path_alias\Entity\PathAlias;
-
 /**
  * Implements hook_install().
  */
@@ -34,7 +32,7 @@ function bt_crm_install() {
     'handler_id' => 'create_a_redhen_contact',
     'status' => TRUE,
     'weight' => 1,
-    'settings' => array(),
+    'settings' => [],
   ];
   $webform_contacto->set('handlers', $handlers)->save(TRUE);
 
