@@ -5,6 +5,7 @@ namespace Drupal\bt_crm\Plugin\WebformHandler;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\webform\WebformSubmissionInterface;
 
 /**
  * Form submission handler.
