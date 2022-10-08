@@ -25,15 +25,8 @@ class CreateRedhenContact extends WebformHandlerBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('logger.factory'),
-      $container->get('config.factory'),
-      $container->get('entity_type.manager'),
-      $container->get('webform_submission.conditions_validator'),
-    );
+    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+    return $instance;
   }
 
   /**
@@ -41,7 +34,8 @@ class CreateRedhenContact extends WebformHandlerBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
     $data = $webform_submission->getData();
-    $query = $this->entityTypeManager->getStorage('redhen_contact')->getQuery();
+    $contact_entity = $this->entityTypeManager->getStorage('redhen_contact');
+    $query = $contact_entity->getQuery();
 
     // We need to know if the person sending the form exist in the CRM.
     $query->condition('email', $data['email']);
@@ -50,7 +44,7 @@ class CreateRedhenContact extends WebformHandlerBase {
     // If don't exist then we create it.
     if (empty($entity_ids)) {
       // Create a new redhen_contact of type bt_potential_client.
-      $prospect = Contact::create(['type' => 'bt_potential_client']);
+      $prospect = $contact_entity->create(['type' => 'bt_potential_client']);
       // Set fields.
       $prospect->setEmail($data['email']);
       $prospect->set('first_name', $data['name']);
