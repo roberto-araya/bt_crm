@@ -21,13 +21,7 @@ class RedhenContactTypeAccessControlHandler extends EntityAccessControlHandler {
         return AccessResult::allowedIfHasPermission($account, 'add contact entities');
 
       case 'delete':
-        if (!$entity->status()) {
-          return AccessResult::forbidden()->addCacheableDependency($entity);
-        }
-        else {
-          return parent::checkAccess($entity, $operation, $account)->addCacheableDependency($entity);
-        }
-        break;
+        return parent::checkAccess($entity, $operation, $account);
 
       default:
         return parent::checkAccess($entity, $operation, $account);

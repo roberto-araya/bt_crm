@@ -42,7 +42,7 @@ class OrganizationsDeleteForm extends ContentEntityDeleteForm {
       $untranslated_entity = $entity->getUntranslated();
       $untranslated_entity->removeTranslation($entity->language()->getId());
       $untranslated_entity->save();
-      $form_state->setRedirectUrl($untranslated_entity->urlInfo('canonical'));
+      $form_state->setRedirectUrl($untranslated_entity->toUrl('canonical'));
     }
     else {
       $entity->delete();

@@ -4,7 +4,7 @@ namespace Drupal\bt_crm\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Url;
-use Drupal\redhen_contact\ContactInterface;
+use Drupal\redhen_contact\Entity\Contact;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\Entity\User;
 
@@ -18,7 +18,7 @@ class ConvertPotentialToClientConfirm extends FormBase {
   /**
    * Redhen contact object.
    *
-   * @var contact
+   * @var \Drupal\redhen_contact\Entity\Contact
    */
   public $contact;
 
@@ -39,7 +39,7 @@ class ConvertPotentialToClientConfirm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, ContactInterface $redhen_contact = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, Contact $redhen_contact = NULL) {
     $this->contact = $redhen_contact;
     $email = $this->contact->getEmail();
     if (empty($email)) {

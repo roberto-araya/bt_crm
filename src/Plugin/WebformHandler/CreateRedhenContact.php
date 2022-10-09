@@ -6,6 +6,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\webform\WebformSubmissionInterface;
+use Drupal\redhen_contact\Entity\Contact;
 
 /**
  * Form submission handler.
@@ -45,10 +46,13 @@ class CreateRedhenContact extends WebformHandlerBase {
     if (empty($entity_ids)) {
       // Create a new redhen_contact of type bt_potential_client.
       $prospect = $contact_entity->create(['type' => 'bt_potential_client']);
-      // Set fields.
-      $prospect->setEmail($data['email']);
-      $prospect->set('first_name', $data['name']);
-      $prospect->save();
+
+      if (is_object($prospect) && $prospect instanceof Contact) {
+        // Set fields.
+        $prospect->setEmail($data['email']);
+        $prospect->set('first_name', $data['name']);
+        $prospect->save();
+      }
     }
   }
 
