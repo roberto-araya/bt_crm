@@ -55,6 +55,23 @@ class RouteSubscriber extends RouteSubscriberBase {
       $route->setPath('/app/contacts/organization/{redhen_org}/delete');
       $route->setOption('_admin_route', TRUE);
     }
+
+    // Alter bt_opportunity routes.
+    if ($route = $collection->get('entity.bt_opportunity.canonical')) {
+      $route->setOption('_admin_route', TRUE);
+    }
+    if ($route = $collection->get('entity.bt_opportunity.add_form')) {
+      $route->setOption('_admin_route', TRUE);
+    }
+    if ($route = $collection->get('entity.bt_opportunity.edit_form')) {
+      $route->setOption('_admin_route', TRUE);
+    }
+    if ($route = $collection->get('entity.bt_opportunity.delete_form')) {
+      $route->setOption('_admin_route', TRUE);
+    }
+    if ($route = $collection->get('entity.bt_opportunity.collection')) {
+      $route->setOption('_admin_route', TRUE);
+    }
   }
 
 }
