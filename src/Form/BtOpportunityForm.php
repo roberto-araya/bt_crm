@@ -26,14 +26,17 @@ class BtOpportunityForm extends ContentEntityForm {
    * Injecting the Renderer Service.
    *
    * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
-   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface|NULL $entity_type_bundle_info
-   * @param \Drupal\Component\Datetime\TimeInterface|NULL $time
+   *   Entity Interface.
+   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface|null $entity_type_bundle_info
+   *   Entity Bundle Info Interface.
+   * @param \Drupal\Component\Datetime\TimeInterface|null $time
+   *   Time Interface.
    * @param \Drupal\Core\Render\Renderer $renderer
    *   Renderer Service.
    */
   public function __construct(EntityRepositoryInterface $entity_repository, EntityTypeBundleInfoInterface $entity_type_bundle_info = NULL, TimeInterface $time = NULL, Renderer $renderer) {
     parent::__construct($entity_repository, $entity_type_bundle_info, $time);
-      $this->renderer = $renderer;
+    $this->renderer = $renderer;
   }
 
   /**
@@ -45,7 +48,7 @@ class BtOpportunityForm extends ContentEntityForm {
       $container->get('entity_type.bundle.info'),
       $container->get('datetime.time'),
       $container->get('renderer')
-   );
+    );
   }
 
   /**
