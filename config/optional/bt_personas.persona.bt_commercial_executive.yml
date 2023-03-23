@@ -5,3 +5,4 @@ id: bt_commercial_executive
 label: 'Commercial Executive'
 roles:
   bt_use_crm: bt_use_crm
+  bt_admin_web_forms_messages: bt_admin_web_forms_messages
