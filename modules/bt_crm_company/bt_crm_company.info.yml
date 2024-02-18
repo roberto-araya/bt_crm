@@ -1,7 +1,7 @@
 name: Btester Company
 type: module
 description: Btester CRM Company
-core_version_requirement: ^9.2
+core_version_requirement: ~9.4.0
 package: Btester
 dependencies:
   - bt_crm:bt_crm

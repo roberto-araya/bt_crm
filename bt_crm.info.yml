@@ -1,7 +1,7 @@
 name: Btester CRM
 type: module
 description: 'Btester CRM'
-core_version_requirement: ^9.2
+core_version_requirement: ~9.4.0
 dependencies:
   - drupal:text
   - drupal:datetime

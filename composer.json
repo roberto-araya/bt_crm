@@ -16,7 +16,8 @@
   },
   "minimum-stability": "dev",
   "require": {
-    "drupal/bt_core": "2.x",
+    "drupal/core": "~9.4.0",
+    "drupal/bt_core": "~2.0.0",
     "drupal/redhen": "1.x",
     "drupal/field_states_ui": "^2.0",
     "drupal/entity": "^1.0",
