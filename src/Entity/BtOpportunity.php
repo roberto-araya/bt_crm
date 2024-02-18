@@ -2,12 +2,12 @@
 
 namespace Drupal\bt_crm\Entity;
 
+use Drupal\bt_crm\BtOpportunityInterface;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\bt_crm\BtOpportunityInterface;
 use Drupal\user\UserInterface;
 
 /**

@@ -3,8 +3,8 @@
 namespace Drupal\bt_crm;
 
 use Drupal\Core\Entity\ContentEntityInterface;
-use Drupal\user\EntityOwnerInterface;
 use Drupal\Core\Entity\EntityChangedInterface;
+use Drupal\user\EntityOwnerInterface;
 
 /**
  * Provides an interface defining an opportunity entity type.
