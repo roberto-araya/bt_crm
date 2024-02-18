@@ -76,7 +76,7 @@ if [ -n "${DRUPAL_VERSION}" ] && [ -n "${DRUPAL_PROJECT_SHA}" ]; then
   echo "  > Initialising Drupal site from the scaffold commit ${DRUPAL_PROJECT_SHA}."
 
   # Clone Drupal core at the specific commit SHA.
-  git clone -n https://github.com/roberto-araya/custom-recommended-project.git "${BUILD_DIR}"
+  git clone -n https://github.com/btestercl/drupal-test-project "${BUILD_DIR}"
   git --git-dir="${BUILD_DIR}/.git" --work-tree="${BUILD_DIR}" checkout "${DRUPAL_PROJECT_SHA}"
   rm -rf "${BUILD_DIR}/.git" > /dev/null
 
